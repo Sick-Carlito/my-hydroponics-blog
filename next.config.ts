@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Ensure proper module resolution
+  reactStrictMode: true,
+  
+  // Tailwind v4 support
+  experimental: {
+    optimizeCss: true,
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
