@@ -32,7 +32,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
     <Link href={`/blog/${post.slug}`}>
       <Card hover padding="none" className="overflow-hidden h-full">
         {/* Image Placeholder */}
-        <div className="h-48 bg-gradient-to-br from-ocean-400 to-cyan-500 flex items-center justify-center">
+        <div className="h-48 bg-gradient-to-br from-vegetation-400 to-lime-500 flex items-center justify-center">
           {post.image ? (
             <img
               src={post.image}

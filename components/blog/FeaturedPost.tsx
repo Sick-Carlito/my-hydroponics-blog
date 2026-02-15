@@ -32,7 +32,7 @@ export const FeaturedPost: React.FC<FeaturedPostProps> = ({ post }) => {
     <Card variant="elevated" padding="none" className="overflow-hidden">
       <div className="md:flex">
         {/* Image */}
-        <div className="md:w-1/2 bg-gradient-to-br from-ocean-400 to-cyan-600 p-12 flex items-center justify-center">
+        <div className="md:w-1/2 bg-gradient-to-br from-vegetation-400 to-lime-600 p-12 flex items-center justify-center">
           {post.image ? (
             <img
               src={post.image}
