@@ -1,6 +1,6 @@
 // ============================================
 // FILE: components/ui/Section.tsx
-// Section wrapper component
+// Section component - GREEN OCEAN VARIANT
 // ============================================
 
 import React from 'react';
@@ -19,7 +19,8 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(
     
     const variants = {
       default: 'bg-white',
-      ocean: 'bg-gradient-to-br from-ocean-600 via-cyan-500 to-ocean-700 text-white',
+      // GREEN GRADIENT instead of cyan!
+      ocean: 'bg-gradient-to-br from-vegetation-600 via-lime-500 to-vegetation-700 text-white',
       light: 'bg-gray-50',
       dark: 'bg-slate-900 text-white',
     };

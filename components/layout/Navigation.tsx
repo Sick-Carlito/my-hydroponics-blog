@@ -1,6 +1,6 @@
 // ============================================
 // FILE: components/layout/Navigation.tsx
-// Main navigation component
+// Navigation with GREEN THEME
 // ============================================
 
 'use client';
@@ -36,9 +36,9 @@ export const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           
-          {/* Logo */}
+          {/* Logo - GREEN GRADIENT */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-ocean-600 to-cyan-500 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-200">
+            <div className="w-10 h-10 bg-gradient-to-br from-vegetation-600 to-lime-500 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-200">
               <svg
                 className="w-6 h-6 text-white"
                 fill="none"
@@ -53,21 +53,21 @@ export const Navigation = () => {
                 />
               </svg>
             </div>
-            <span className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-ocean-600 transition-colors">
+            <span className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-vegetation-600 transition-colors">
               {siteConfig.name}
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - GREEN HOVER */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 hover:text-ocean-600 font-medium transition-colors duration-200 relative group"
+                className="text-gray-700 hover:text-vegetation-600 font-medium transition-colors duration-200 relative group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-ocean-600 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-vegetation-600 group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
           </div>
@@ -90,7 +90,7 @@ export const Navigation = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - GREEN HOVER */}
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 animate-slide-down">
             <div className="flex flex-col space-y-4">
@@ -99,7 +99,7 @@ export const Navigation = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-700 hover:text-ocean-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-ocean-50"
+                  className="text-gray-700 hover:text-vegetation-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-vegetation-50"
                 >
                   {link.label}
                 </Link>

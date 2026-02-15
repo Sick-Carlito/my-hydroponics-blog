@@ -1,6 +1,6 @@
 // ============================================
 // FILE: components/ui/Button.tsx
-// Reusable Button component
+// Button component - GREEN THEME
 // ============================================
 
 import React from 'react';
@@ -15,13 +15,17 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'primary', size = 'md', className, children, ...props }, ref) => {
-    const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+    const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-vegetation-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
     
     const variants = {
-      primary: 'bg-ocean-600 text-white hover:bg-ocean-700 hover:shadow-lg',
-      secondary: 'bg-cyan-600 text-white hover:bg-cyan-700 hover:shadow-lg',
-      outline: 'border-2 border-ocean-600 text-ocean-600 hover:bg-ocean-600 hover:text-white',
-      ghost: 'text-ocean-600 hover:bg-ocean-50',
+      // GREEN primary button
+      primary: 'bg-vegetation-600 text-white hover:bg-vegetation-700 hover:shadow-lg',
+      // LIME secondary button
+      secondary: 'bg-lime-600 text-white hover:bg-lime-700 hover:shadow-lg',
+      // WHITE outline button (for green backgrounds)
+      outline: 'border-2 border-white text-white bg-transparent hover:bg-white hover:text-vegetation-600',
+      // GREEN ghost button
+      ghost: 'text-vegetation-600 bg-transparent hover:bg-vegetation-50',
     };
 
     const sizes = {

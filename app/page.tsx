@@ -28,7 +28,7 @@ export default async function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/blog">
-                <Button size="lg" variant="primary" className="bg-white text-ocean-600 hover:bg-ocean-50">
+                <Button size="lg" variant="primary" className="bg-green-500 text-ocean-600 hover:bg-ocean-50">
                   Start Learning
                 </Button>
               </Link>
