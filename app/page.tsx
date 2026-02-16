@@ -28,7 +28,7 @@ export default async function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/blog">
-                <Button size="lg" variant="primary" className="bg-green-500 text-ocean-600 hover:bg-ocean-50">
+                <Button size="lg" variant="outline">
                   Start Learning
                 </Button>
               </Link>
@@ -145,7 +145,7 @@ export default async function HomePage() {
               Join thousands of hydroponic gardeners and start your journey today!
             </p>
             <Link href="/blog">
-              <Button size="lg" variant="primary" className="bg-white text-ocean-600 hover:bg-ocean-50">
+              <Button size="lg" variant="outline" className="text-ocean-600 hover:bg-ocean-50">
                 Explore Our Guides
               </Button>
             </Link>

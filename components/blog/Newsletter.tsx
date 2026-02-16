@@ -52,14 +52,14 @@ export const Newsletter: React.FC = () => {
             placeholder="Enter your email"
             required
             disabled={status === 'loading'}
-            className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-vegetation-300 disabled:opacity-50"
+            className="bg-white flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-vegetation-300 disabled:opacity-50"
           />
           <Button
             type="submit"
-            variant="primary"
+            variant="outline"
             size="lg"
             disabled={status === 'loading'}
-            className="bg-white text-vegetation-600 hover:bg-vegetation-50"
+            className="text-vegetation-600 hover:bg-vegetation-50"
           >
             {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
           </Button>

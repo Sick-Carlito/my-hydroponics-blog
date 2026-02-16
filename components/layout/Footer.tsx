@@ -1,6 +1,6 @@
 // ============================================
 // FILE: components/layout/Footer.tsx
-// Footer component
+// Footer with GREEN logo gradient
 // ============================================
 
 import React from 'react';
@@ -19,7 +19,8 @@ export const Footer = () => {
           {/* About */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-ocean-600 to-cyan-500 rounded-lg flex items-center justify-center">
+              {/* GREEN GRADIENT LOGO */}
+              <div className="w-10 h-10 bg-gradient-to-br from-vegetation-600 to-lime-500 rounded-lg flex items-center justify-center">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -47,7 +48,7 @@ export const Footer = () => {
                   href={siteConfig.social.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-ocean-400 transition-colors"
+                  className="hover:text-vegetation-400 transition-colors"
                   aria-label="Twitter"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -60,7 +61,7 @@ export const Footer = () => {
                   href={siteConfig.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-ocean-400 transition-colors"
+                  className="hover:text-vegetation-400 transition-colors"
                   aria-label="Facebook"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -73,7 +74,7 @@ export const Footer = () => {
                   href={siteConfig.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-ocean-400 transition-colors"
+                  className="hover:text-vegetation-400 transition-colors"
                   aria-label="Instagram"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -86,7 +87,7 @@ export const Footer = () => {
                   href={siteConfig.social.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-ocean-400 transition-colors"
+                  className="hover:text-vegetation-400 transition-colors"
                   aria-label="YouTube"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -105,7 +106,7 @@ export const Footer = () => {
                 <li key={category.slug}>
                   <Link
                     href={`/category/${category.slug}`}
-                    className="hover:text-ocean-400 transition-colors text-sm"
+                    className="hover:text-vegetation-400 transition-colors text-sm"
                   >
                     {category.name}
                   </Link>
@@ -119,22 +120,22 @@ export const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="hover:text-ocean-400 transition-colors text-sm">
+                <Link href="/" className="hover:text-vegetation-400 transition-colors text-sm">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-ocean-400 transition-colors text-sm">
+                <Link href="/blog" className="hover:text-vegetation-400 transition-colors text-sm">
                   All Posts
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-ocean-400 transition-colors text-sm">
+                <Link href="/about" className="hover:text-vegetation-400 transition-colors text-sm">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/blog#newsletter" className="hover:text-ocean-400 transition-colors text-sm">
+                <Link href="/blog#newsletter" className="hover:text-vegetation-400 transition-colors text-sm">
                   Newsletter
                 </Link>
               </li>
