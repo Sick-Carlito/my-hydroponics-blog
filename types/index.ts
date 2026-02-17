@@ -1,7 +1,17 @@
 // ============================================
 // FILE: types/index.ts
-// Core type definitions for the blog
+// TypeScript type definitions
 // ============================================
+
+export interface Author {
+  name: string;
+  bio?: string;
+  avatar?: string;
+  social?: {
+    twitter?: string;
+    instagram?: string;
+  };
+}
 
 export interface BlogPost {
   slug: string;
@@ -12,20 +22,9 @@ export interface BlogPost {
   readTime: string;
   category: string;
   tags: string[];
-  author: Author;
-  featured: boolean;
+  author?: Author;
+  featured?: boolean;
   image?: string;
-}
-
-export interface Author {
-  name: string;
-  bio: string;
-  avatar?: string;
-  social?: {
-    twitter?: string;
-    linkedin?: string;
-    github?: string;
-  };
 }
 
 export interface Category {
@@ -33,6 +32,8 @@ export interface Category {
   name: string;
   description: string;
   color: string;
+  activeColor: string;    // ← NEW: full active button classes
+  inactiveColor: string;  // ← NEW: full inactive button classes
   icon?: string;
 }
 
@@ -47,15 +48,10 @@ export interface SiteConfig {
     facebook?: string;
     instagram?: string;
     youtube?: string;
-    pinterest?: string;
-  };
-  newsletter: {
-    enabled: boolean;
-    provider?: string;
   };
 }
 
 export interface NavLink {
-  label: string;
   href: string;
+  label: string;
 }
