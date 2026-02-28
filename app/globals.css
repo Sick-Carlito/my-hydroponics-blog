@@ -152,3 +152,234 @@ img {
 a, button {
   transition: color 0.2s;
 }
+/* ============================================
+   FILE: app/globals.css (ADD TO EXISTING)
+   Additional styles for accessibility and print
+   ============================================ */
+
+/* ADD THESE TO YOUR EXISTING globals.css FILE */
+
+/* ── Accessibility: Focus Visible Styles ── */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 3px solid #16a34a;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Focus visible for buttons and links */
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #16a34a;
+  outline-offset: 2px;
+}
+
+/* Skip link styles */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.sr-only:active {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ── Touch-Friendly Hit Areas ── */
+@media (hover: none) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ── Print Styles ── */
+@media print {
+  /* Hide non-essential elements */
+  nav,
+  footer,
+  .sidebar,
+  .back-to-top,
+  .share-buttons,
+  .newsletter,
+  button,
+  aside {
+    display: none !important;
+  }
+
+  /* Optimize for print */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  .article-content {
+    max-width: 100% !important;
+    column-count: 1 !important;
+  }
+
+  /* Page breaks */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  img,
+  figure,
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Show URLs for links */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  /* Remove unnecessary spacing */
+  article {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Black text for better printing */
+  * {
+    color: black !important;
+    background: white !important;
+  }
+
+  /* Keep code blocks readable */
+  pre,
+  code {
+    border: 1px solid #ddd !important;
+    background: #f5f5f5 !important;
+    color: black !important;
+    page-break-inside: avoid;
+  }
+}
+
+/* ── Horizontal Scroll Protection ── */
+.article-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── High Contrast Mode ── */
+@media (prefers-contrast: high) {
+  button,
+  a {
+    border: 2px solid currentColor;
+  }
+
+  .bg-vegetation-600 {
+    background-color: #0a5c2e !important;
+  }
+
+  .text-vegetation-600 {
+    color: #0a5c2e !important;
+  }
+}
+
+/* ── Dark Mode Preparation (optional) ── */
+@media (prefers-color-scheme: dark) {
+  /* You can add dark mode styles later if needed */
+}
+
+/* ── Loading Animations ── */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    to right,
+    #f0f0f0 0%,
+    #e0e0e0 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* ── Smooth Scrolling with Offset ── */
+html {
+  scroll-padding-top: 100px;
+}
+
+/* ── Selection Colors ── */
+::selection {
+  background-color: #bbf7d0;
+  color: #14532d;
+}
+
+::-moz-selection {
+  background-color: #bbf7d0;
+  color: #14532d;
+}
+
+/* ── Improved Link Underlines ── */
+.article-content a {
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 3px;
+}
