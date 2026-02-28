@@ -1,10 +1,11 @@
 // ============================================
 // FILE: components/blog/BlogPostCard.tsx
-// Blog post card component for listings
+// Blog post card with Next.js Image optimization
 // ============================================
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { formatDate } from '@/lib/utils';
@@ -15,7 +16,6 @@ interface BlogPostCardProps {
 }
 
 export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
-  // Get badge color based on category
   const getBadgeVariant = (category: string) => {
     const variants: Record<string, any> = {
       'beginner-guides': 'blue',
@@ -30,29 +30,34 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
 
   return (
     <Link href={`/blog/${post.slug}`}>
-      <Card hover padding="none" className="overflow-hidden h-full">
-        {/* Image Placeholder */}
-        <div className="h-48 bg-gradient-to-br from-vegetation-400 to-lime-500 flex items-center justify-center">
+      <Card hover padding="none" className="overflow-hidden h-full group">
+        {/* Image - OPTIMIZED with Next.js Image */}
+        <div className="relative h-48 bg-gradient-to-br from-vegetation-400 to-lime-500 overflow-hidden">
           {post.image ? (
-            <img
+            <Image
               src={post.image}
               alt={post.title}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              loading="lazy"
             />
           ) : (
-            <svg
-              className="w-20 h-20 text-white opacity-50"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
+            <div className="flex items-center justify-center h-full">
+              <svg
+                className="w-20 h-20 text-white opacity-50"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+            </div>
           )}
         </div>
 
@@ -62,7 +67,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
             {post.category.replace('-', ' ')}
           </Badge>
 
-          <h3 className="text-xl font-bold mb-2 text-gray-900 line-clamp-2 group-hover:text-ocean-600 transition-colors">
+          <h3 className="text-xl font-bold mb-2 text-gray-900 line-clamp-2 group-hover:text-vegetation-600 transition-colors">
             {post.title}
           </h3>
 
@@ -72,7 +77,12 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
 
           <div className="flex items-center justify-between text-sm text-gray-500">
             <span>{formatDate(post.date)}</span>
-            <span>{post.readTime}</span>
+            <div className="flex items-center gap-1.5">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{post.readTime}</span>
+            </div>
           </div>
 
           {/* Tags */}

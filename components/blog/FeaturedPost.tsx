@@ -1,10 +1,11 @@
 // ============================================
 // FILE: components/blog/FeaturedPost.tsx
-// Featured blog post component
+// Featured post with Next.js Image optimization
 // ============================================
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -31,30 +32,35 @@ export const FeaturedPost: React.FC<FeaturedPostProps> = ({ post }) => {
   return (
     <Card variant="elevated" padding="none" className="overflow-hidden">
       <div className="md:flex">
-        {/* Image */}
-        <div className="md:w-1/2 bg-gradient-to-br from-vegetation-400 to-lime-600 p-12 flex items-center justify-center">
+        {/* Image - OPTIMIZED with Next.js Image */}
+        <div className="relative md:w-1/2 h-64 md:h-auto bg-gradient-to-br from-vegetation-400 to-lime-600">
           {post.image ? (
-            <img
+            <Image
               src={post.image}
               alt={post.title}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority // Load featured image first
             />
           ) : (
-            <div className="text-center text-white">
-              <svg
-                className="w-32 h-32 mx-auto mb-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <p className="text-xl font-semibold">Featured Guide</p>
+            <div className="flex items-center justify-center h-full p-12">
+              <div className="text-center text-white">
+                <svg
+                  className="w-32 h-32 mx-auto mb-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <p className="text-xl font-semibold">Featured Guide</p>
+              </div>
             </div>
           )}
         </div>
