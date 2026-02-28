@@ -1,14 +1,14 @@
 // ============================================
 // FILE: app/blog/page.tsx
-// Blog listing page - displays all posts
+// Blog listing page with search
 // ============================================
 
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
-import { BlogPostCard } from '@/components/blog/BlogPostCard';
 import { FeaturedPost } from '@/components/blog/FeaturedPost';
 import { CategoryFilter } from '@/components/blog/CategoryFilter';
 import { Newsletter } from '@/components/blog/Newsletter';
+import { BlogSearch } from '@/components/blog/BlogSearch';
 import { getAllBlogPosts, getFeaturedPosts } from '@/lib/mdx';
 
 export const metadata = {
@@ -30,7 +30,7 @@ export default async function BlogPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Hydroponics Blog
             </h1>
-            <p className="text-xl md:text-2xl text-ocean-50 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-vegetation-50 max-w-3xl mx-auto">
               Expert guides, tips, and tutorials for growing fresh produce with hydroponics
             </p>
           </div>
@@ -54,10 +54,12 @@ export default async function BlogPage() {
         </Container>
       </Section>
 
-      {/* All Posts */}
+      {/* Search & All Posts */}
       <Section variant="light" padding="lg">
         <Container>
-          <h2 className="text-3xl font-bold mb-8 text-gray-900">Latest Articles</h2>
+          <h2 className="text-3xl font-bold mb-8 text-gray-900 text-center">
+            All Articles
+          </h2>
           
           {allPosts.length === 0 ? (
             <div className="text-center py-12">
@@ -65,11 +67,7 @@ export default async function BlogPage() {
               <p className="text-gray-500 mt-2">Check back soon for new content!</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {allPosts.map((post) => (
-                <BlogPostCard key={post.slug} post={post} />
-              ))}
-            </div>
+            <BlogSearch posts={allPosts} />
           )}
         </Container>
       </Section>

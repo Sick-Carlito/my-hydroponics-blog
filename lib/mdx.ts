@@ -121,3 +121,48 @@ export async function getRecentPosts(limit: number = 6): Promise<BlogPost[]> {
   const allPosts = await getAllBlogPosts();
   return allPosts.slice(0, limit);
 }
+
+// ============================================
+// ADD TO: lib/mdx.ts
+// Related posts functionality
+// ============================================
+
+// Add this function to your existing lib/mdx.ts file
+
+export async function getRelatedPosts(currentPost: BlogPost, limit: number = 3): Promise<BlogPost[]> {
+  const allPosts = await getAllBlogPosts();
+  
+  // Filter out current post
+  const otherPosts = allPosts.filter(p => p.slug !== currentPost.slug);
+  
+  // Calculate relevance score for each post
+  const scoredPosts = otherPosts.map(post => {
+    let score = 0;
+    
+    // Same category gets highest score
+    if (post.category === currentPost.category) {
+      score += 10;
+    }
+    
+    // Matching tags get medium score
+    const matchingTags = post.tags?.filter(tag => 
+      currentPost.tags?.includes(tag)
+    ) || [];
+    score += matchingTags.length * 3;
+    
+    // More recent posts get slight boost
+    const daysDiff = Math.abs(
+      new Date(post.date).getTime() - new Date(currentPost.date).getTime()
+    ) / (1000 * 60 * 60 * 24);
+    if (daysDiff < 30) score += 2;
+    if (daysDiff < 7) score += 3;
+    
+    return { post, score };
+  });
+  
+  // Sort by score and return top N
+  return scoredPosts
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(item => item.post);
+}
