@@ -1,12 +1,13 @@
 // ============================================
 // FILE: components/layout/Navigation.tsx
-// Navigation with GUARANTEED visible Subscribe button
+// Navigation with custom hydroponics droplet
 // ============================================
 
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { HydroDroplet } from '@/components/ui/HydroDroplet';
 
 export const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,14 +39,14 @@ export const Navigation: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            {/* Logo Icon - Seedling Emoji */}
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-600 to-lime-400 flex items-center justify-center shadow-md group-hover:shadow-lg transition-all group-hover:scale-105">
-              <span className="text-2xl">🌱</span>
+            {/* Custom Hydro Droplet - NOT animated in nav */}
+            <div className="w-10 h-10 rounded-xl bg-white shadow-md group-hover:shadow-lg transition-all group-hover:scale-105 flex items-center justify-center">
+              <HydroDroplet size={32} animated={false} />
             </div>
             
             {/* Logo Text */}
             <div className="flex flex-col">
-              <span className="font-black text-lg leading-none bg-gradient-to-r from-green-600 to-lime-500 bg-clip-text text-transparent">
+              <span className="font-black text-lg leading-none bg-gradient-to-r from-cyan-600 via-green-600 to-green-700 bg-clip-text text-transparent">
                 Hydroponics Central
               </span>
               <span className="text-[10px] text-gray-500 font-medium tracking-wide leading-none mt-0.5">
@@ -66,11 +67,10 @@ export const Navigation: React.FC = () => {
               </Link>
             ))}
             
-            {/* Subscribe Button - GUARANTEED VISIBLE */}
+            {/* Subscribe Button */}
             <Link href="/blog#newsletter">
               <button 
-                className="px-5 py-2.5 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-all shadow-md hover:shadow-lg"
-                style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+                className="px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-green-600 text-white font-bold rounded-lg hover:from-cyan-700 hover:to-green-700 transition-all shadow-md hover:shadow-lg"
               >
                 Subscribe
               </button>
@@ -123,11 +123,10 @@ export const Navigation: React.FC = () => {
                 </Link>
               ))}
               
-              {/* Mobile Subscribe Button - GUARANTEED VISIBLE */}
+              {/* Mobile Subscribe Button */}
               <Link href="/blog#newsletter" onClick={() => setIsMobileMenuOpen(false)}>
                 <button 
-                  className="w-full px-5 py-2.5 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-all shadow-md"
-                  style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
+                  className="w-full px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-green-600 text-white font-bold rounded-lg hover:from-cyan-700 hover:to-green-700 transition-all shadow-md"
                 >
                   Subscribe
                 </button>

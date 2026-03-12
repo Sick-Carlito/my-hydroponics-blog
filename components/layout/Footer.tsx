@@ -1,10 +1,11 @@
 // ============================================
 // FILE: components/layout/Footer.tsx
-// Footer with Hydroponics Central branding
+// Footer with custom hydroponics droplet
 // ============================================
 
 import React from 'react';
 import Link from 'next/link';
+import { HydroDroplet } from '@/components/ui/HydroDroplet';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -69,14 +70,14 @@ export const Footer: React.FC = () => {
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <Link href="/" className="inline-flex items-center gap-3 mb-4 group">
-              {/* Logo Icon */}
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-vegetation-500 to-lime-400 flex items-center justify-center shadow-md group-hover:shadow-lg transition-all">
-                <span className="text-2xl">🌱</span>
+              {/* Custom Hydro Droplet */}
+              <div className="w-10 h-10 rounded-xl bg-gray-800 shadow-md group-hover:shadow-lg transition-all flex items-center justify-center">
+                <HydroDroplet size={32} animated={false} />
               </div>
               
               {/* Logo Text */}
               <div className="flex flex-col">
-                <span className="font-black text-lg leading-none bg-gradient-to-r from-vegetation-400 to-lime-400 bg-clip-text text-transparent">
+                <span className="font-black text-lg leading-none bg-gradient-to-r from-cyan-400 via-green-400 to-green-500 bg-clip-text text-transparent">
                   Hydroponics Central
                 </span>
                 <span className="text-[10px] text-gray-400 font-medium tracking-wide leading-none mt-0.5">
@@ -98,7 +99,7 @@ export const Footer: React.FC = () => {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm hover:text-vegetation-400 transition-colors"
+                    className="text-sm hover:text-green-400 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -115,7 +116,7 @@ export const Footer: React.FC = () => {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm hover:text-vegetation-400 transition-colors"
+                    className="text-sm hover:text-green-400 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -128,7 +129,7 @@ export const Footer: React.FC = () => {
         {/* Social Links & Copyright */}
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-400">
-            © {currentYear} Hydroponics Central. Curating the best in hydroponic growing.
+            © {currentYear} Hydroponics Central. Growing without soil, powered by water.
           </p>
 
           <div className="flex items-center gap-4">
@@ -138,7 +139,7 @@ export const Footer: React.FC = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-vegetation-400 transition-colors"
+                className="text-gray-400 hover:text-green-400 transition-colors"
                 aria-label={social.name}
               >
                 {social.icon}

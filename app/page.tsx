@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button';
 import { BlogPostCard } from '@/components/blog/BlogPostCard';
 import { Newsletter } from '@/components/blog/Newsletter';
 import { getRecentPosts } from '@/lib/mdx';
+import { AnimatedHero } from '@/components/home/AnimatedHero';
 import Link from 'next/link';
 
 export default async function HomePage() {
@@ -17,30 +18,8 @@ export default async function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <Section variant="ocean" padding="xl">
-        <Container>
-          <div className="text-center text-white">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
-              Grow Smarter with Hydroponics
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-ocean-50 max-w-3xl mx-auto">
-              Your complete guide to soilless gardening. Learn to grow fresh produce faster, cleaner, and year-round.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/blog">
-                <Button size="lg" variant="outline">
-                  Start Learning
-                </Button>
-              </Link>
-              <Link href="/blog#categories">
-                <Button size="lg" variant="outline">
-                  Browse Categories
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      
+      <AnimatedHero />
 
       {/* Why Hydroponics Section */}
       <Section variant="light" padding="lg">
