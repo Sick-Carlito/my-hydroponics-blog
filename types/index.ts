@@ -1,17 +1,7 @@
 // ============================================
 // FILE: types/index.ts
-// TypeScript type definitions
+// Type definitions - FIXED with linkedin
 // ============================================
-
-export interface Author {
-  name: string;
-  bio?: string;
-  avatar?: string;
-  social?: {
-    twitter?: string;
-    instagram?: string;
-  };
-}
 
 export interface BlogPost {
   slug: string;
@@ -21,37 +11,30 @@ export interface BlogPost {
   date: string;
   readTime: string;
   category: string;
-  tags: string[];
+  tags?: string[];
   author?: Author;
-  featured?: boolean;
   image?: string;
+  featured?: boolean;
 }
 
-export interface Category {
-  slug: string;
+export interface Author {
   name: string;
-  description: string;
-  color: string;
-  activeColor: string;    // ← NEW: full active button classes
-  inactiveColor: string;  // ← NEW: full inactive button classes
-  icon?: string;
-}
-
-export interface SiteConfig {
-  name: string;
-  title: string;
-  description: string;
-  url: string;
-  author: Author;
-  social: {
+  bio: string;
+  avatar?: string;
+  social?: {
     twitter?: string;
-    facebook?: string;
+    linkedin?: string;  // ADDED THIS
     instagram?: string;
-    youtube?: string;
+    facebook?: string;
+    github?: string;
   };
 }
 
-export interface NavLink {
-  href: string;
-  label: string;
+export interface Category {
+  name: string;
+  slug: string;
+  description: string;
+  icon: string;
+  activeColor: string;
+  inactiveColor: string;
 }
