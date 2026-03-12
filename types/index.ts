@@ -1,6 +1,6 @@
 // ============================================
 // FILE: types/index.ts
-// Type definitions - FIXED with linkedin
+// Type definitions - COMPLETE
 // ============================================
 
 export interface BlogPost {
@@ -23,7 +23,7 @@ export interface Author {
   avatar?: string;
   social?: {
     twitter?: string;
-    linkedin?: string;  // ADDED THIS
+    linkedin?: string;
     instagram?: string;
     facebook?: string;
     github?: string;
@@ -35,7 +35,48 @@ export interface Category {
   slug: string;
   description: string;
   icon: string;
-  color?: string;        // ADDED THIS
+  color?: string;
   activeColor: string;
   inactiveColor: string;
+}
+
+export interface NavLink {
+  href: string;
+  label: string;
+}
+
+export interface SiteConfig {
+  name: string;
+  title?: string;
+  description: string;
+  url: string;
+  author: {
+    name: string;
+    bio?: string;
+    avatar?: string;
+    email?: string;
+    twitter?: string;
+    social?: {
+      twitter?: string;
+      facebook?: string;
+      instagram?: string;
+      linkedin?: string;
+      github?: string;
+      youtube?: string;
+      pinterest?: string;
+    };
+  };
+  social?: {
+    twitter?: string;
+    facebook?: string;
+    instagram?: string;
+    linkedin?: string;
+    github?: string;
+    youtube?: string;
+    pinterest?: string;
+  };
+  newsletter?: {
+    enabled: boolean;
+    provider?: string;
+  };
 }
