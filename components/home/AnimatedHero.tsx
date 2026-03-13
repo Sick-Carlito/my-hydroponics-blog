@@ -102,7 +102,7 @@ export const AnimatedHero: React.FC = () => {
           <p className="text-sm text-gray-500 mb-4 uppercase tracking-widest font-semibold">
             Trusted by Growers Worldwide
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 text-gray-400">
+       {/*<div className="flex flex-wrap justify-center items-center gap-8 text-gray-400">
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
@@ -122,7 +122,7 @@ export const AnimatedHero: React.FC = () => {
               </svg>
               <span className="font-medium">Daily Updates</span>
             </div>
-          </div>
+          </div>*/}
         </div>
       </div>
 

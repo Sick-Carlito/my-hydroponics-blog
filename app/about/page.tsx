@@ -1,258 +1,216 @@
-// ============================================
-// FILE: app/about/page.tsx
-// About page
-// ============================================
-
-import { Container } from '@/components/ui/Container';
-import { Section } from '@/components/ui/Section';
-import { Button } from '@/components/ui/Button';
-import { Newsletter } from '@/components/blog/Newsletter';
-import { siteConfig } from '@/data/siteConfig';
+import React from 'react';
 import Link from 'next/link';
-
-export const metadata = {
-  title: 'About - HydroGrow',
-  description: 'Learn about our mission to help people grow their own fresh food using hydroponic gardening techniques.',
-};
 
 export default function AboutPage() {
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-b from-white to-green-50">
       {/* Hero Section */}
-      <Section variant="ocean" padding="lg">
-        <Container>
-          <div className="text-center text-white">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              About HydroGrow
-            </h1>
-            <p className="text-xl md:text-2xl text-ocean-50 max-w-3xl mx-auto">
-              Empowering people to grow fresh, healthy food at home
-            </p>
-          </div>
-        </Container>
-      </Section>
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-cyan-600 via-green-600 to-green-700 bg-clip-text text-transparent">
+            About Hydroponics Central
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-600 font-semibold">
+            Hi, I'm Carl. I'm Not an Expert — I'm Your Research Assistant.
+          </p>
+        </div>
 
-      {/* Mission Section */}
-      <Section variant="light" padding="lg">
-        <Container size="md">
-          <div className="prose prose-lg max-w-none">
-            <h2 className="text-3xl font-bold mb-6 text-gray-900">Our Mission</h2>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              At HydroGrow, we believe everyone should have access to fresh, nutritious food - 
-              regardless of where they live or how much space they have. Our mission is to make 
-              hydroponic gardening accessible, affordable, and achievable for everyone.
-            </p>
-            <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              Whether you're a complete beginner curious about growing your first lettuce plant, 
-              or an experienced gardener looking to optimize your hydroponic system, we're here 
-              to help you succeed.
-            </p>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Why Hydroponics Section */}
-      <Section variant="default" padding="lg">
-        <Container>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              Why We're Passionate About Hydroponics
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Hydroponics isn't just a growing method - it's a solution to modern challenges
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Reason 1 */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="w-12 h-12 bg-ocean-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-ocean-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Sustainability</h3>
-              <p className="text-gray-600">
-                Hydroponics uses 90% less water than traditional farming and requires no pesticides. 
-                It's one of the most sustainable ways to grow food.
-              </p>
-            </div>
-
-            {/* Reason 2 */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Urban Solution</h3>
-              <p className="text-gray-600">
-                Perfect for apartments and small spaces. You don't need a backyard to grow 
-                your own food anymore.
-              </p>
-            </div>
-
-            {/* Reason 3 */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Food Security</h3>
-              <p className="text-gray-600">
-                Grow fresh produce year-round, regardless of weather or season. Take control 
-                of your food supply.
-              </p>
-            </div>
-
-            {/* Reason 4 */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Educational</h3>
-              <p className="text-gray-600">
-                Perfect for teaching kids about plant biology, sustainability, and where 
-                food comes from.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* What We Offer Section */}
-      <Section variant="light" padding="lg">
-        <Container size="md">
-          <h2 className="text-3xl font-bold mb-8 text-gray-900 text-center">What We Offer</h2>
+        {/* Main Content */}
+        <div className="prose prose-lg max-w-none">
           
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-ocean-600 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900">Beginner-Friendly Guides</h3>
-                <p className="text-gray-600">
-                  Step-by-step tutorials that assume no prior knowledge. We break down complex 
-                  concepts into easy-to-understand lessons.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-ocean-600 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900">System Reviews</h3>
-                <p className="text-gray-600">
-                  Honest reviews of hydroponic systems, from budget DIY setups to premium 
-                  commercial solutions.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-ocean-600 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900">Troubleshooting Help</h3>
-                <p className="text-gray-600">
-                  Problem-solving guides to help you diagnose and fix common issues before 
-                  they become major problems.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-ocean-600 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900">Plant Care Tips</h3>
-                <p className="text-gray-600">
-                  Specific growing guides for popular crops like lettuce, tomatoes, herbs, 
-                  and more.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Our Commitment Section */}
-      <Section variant="default" padding="lg">
-        <Container size="md">
-          <div className="bg-gradient-to-br from-ocean-50 to-cyan-50 p-8 md:p-12 rounded-2xl border-2 border-ocean-200">
-            <h2 className="text-3xl font-bold mb-6 text-gray-900">Our Commitment to You</h2>
-            <div className="space-y-4 text-gray-700 text-lg">
-              <p>
-                <strong className="text-ocean-700">Always Free:</strong> All our content is and 
-                will always be free. We believe knowledge about growing food should be accessible 
-                to everyone.
-              </p>
-              <p>
-                <strong className="text-ocean-700">No BS:</strong> We only recommend products and 
-                techniques we've tested ourselves. No sponsored fluff.
-              </p>
-              <p>
-                <strong className="text-ocean-700">Beginner-Focused:</strong> We remember what it's 
-                like to be a complete beginner. Our guides assume zero prior knowledge.
-              </p>
-              <p>
-                <strong className="text-ocean-700">Community-Driven:</strong> Your questions and 
-                feedback shape our content. We write about what you want to learn.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* CTA Section */}
-      <Section variant="ocean" padding="lg">
-        <Container>
-          <div className="text-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Start Your Hydroponic Journey?
-            </h2>
-            <p className="text-xl text-ocean-50 mb-8 max-w-2xl mx-auto">
-              Join our community and get weekly tips, guides, and inspiration
+          {/* Opening Story */}
+          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+              A few years ago, I wanted to grow my own lettuce. Sounds simple, right?
             </p>
-            <Link href="/blog">
-              <Button size="lg" variant="primary" className="bg-white text-ocean-600 hover:bg-ocean-50">
-                Explore Our Guides
-              </Button>
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+              Wrong.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+              I spent <strong>hours</strong> falling down YouTube rabbit holes. I read conflicting Reddit threads. I bookmarked 47 tabs of "definitive guides" that all said different things.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              That's when I realized: <strong>the information exists, but it's scattered everywhere.</strong>
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed mt-4">
+              So I started <strong className="text-green-600">Hydroponics Central</strong> — not as an expert, but as someone who's willing to do the research <em>for</em> you.
+            </p>
+          </div>
+
+          {/* What I Do */}
+          <div className="bg-gradient-to-br from-cyan-50 to-green-50 rounded-2xl p-8 mb-8 border border-green-100">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">What I Actually Do</h2>
+            <p className="text-gray-700 mb-4">Every week, I:</p>
+            <ul className="space-y-2 text-gray-700">
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">✓</span>
+                <span>Read through those 47-tab browser sessions so you don't have to</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">✓</span>
+                <span>Compare conflicting advice from multiple sources</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">✓</span>
+                <span>Research what different experts recommend</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">✓</span>
+                <span>Organize everything into clear, beginner-friendly guides</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">✓</span>
+                <span>Share it all here — free, no BS</span>
+              </li>
+            </ul>
+            <p className="text-gray-700 mt-6 font-semibold">
+              I'm not claiming to have 30 years of commercial growing experience. I'm a content curator who reads <em>everything</em> and tells you what actually works.
+            </p>
+          </div>
+
+          {/* My Approach */}
+          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">My Approach</h2>
+            <p className="text-gray-700 mb-4">I believe in:</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="flex items-start">
+                <span className="text-2xl mr-3">🔍</span>
+                <div>
+                  <h3 className="font-bold text-gray-900">Transparency</h3>
+                  <p className="text-gray-600 text-sm">I cite my sources and link to original creators</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <span className="text-2xl mr-3">💚</span>
+                <div>
+                  <h3 className="font-bold text-gray-900">Honesty</h3>
+                  <p className="text-gray-600 text-sm">If I'm not sure, I say so</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <span className="text-2xl mr-3">✨</span>
+                <div>
+                  <h3 className="font-bold text-gray-900">Simplicity</h3>
+                  <p className="text-gray-600 text-sm">No jargon. Explained like you're my friend.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <span className="text-2xl mr-3">🎯</span>
+                <div>
+                  <h3 className="font-bold text-gray-900">Reality</h3>
+                  <p className="text-gray-600 text-sm">I recommend what I'd actually tell someone starting out</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-gray-600 text-sm mt-6 italic">
+              I make money through honest affiliate links (which I clearly mark). No sponsored posts. No hidden agendas.
+            </p>
+          </div>
+
+          {/* What You'll Find */}
+          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">What You'll Find Here</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 className="font-bold text-green-600 mb-2">📚 Beginner Guides</h3>
+                <p className="text-gray-600 text-sm">Assuming zero knowledge</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-green-600 mb-2">⚖️ System Comparisons</h3>
+                <p className="text-gray-600 text-sm">DWC vs. NFT vs. Kratky, actually explained</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-green-600 mb-2">🔗 Curated Resources</h3>
+                <p className="text-gray-600 text-sm">The best tutorials from across the web</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-green-600 mb-2">⭐ Honest Reviews</h3>
+                <p className="text-gray-600 text-sm">Researched product roundups</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-green-600 mb-2">🔧 Troubleshooting</h3>
+                <p className="text-gray-600 text-sm">Common problems, multiple solutions</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-green-600 mb-2">💡 Quick Tips</h3>
+                <p className="text-gray-600 text-sm">Weekly practical advice you can use immediately</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Why I Care */}
+          <div className="bg-gradient-to-br from-green-50 to-cyan-50 rounded-2xl p-8 mb-8 border border-green-100">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Why I Care About This</h2>
+            <p className="text-gray-700 mb-4">Hydroponics is amazing because:</p>
+            <ul className="space-y-2 text-gray-700">
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">🏠</span>
+                <span>You can grow food in an apartment</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">💧</span>
+                <span>It uses 90% less water than soil</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">🌿</span>
+                <span>Fresh herbs year-round (seriously life-changing)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-600 mr-2">🎉</span>
+                <span>It's fun to see things actually grow</span>
+              </li>
+            </ul>
+            <p className="text-gray-700 mt-6 font-semibold">
+              But the learning curve is unnecessarily steep because information is everywhere and nowhere at the same time.
+            </p>
+            <p className="text-lg text-green-600 font-bold mt-4">
+              I'm here to fix that.
+            </p>
+          </div>
+
+          {/* Newsletter CTA */}
+          <div className="bg-gradient-to-r from-cyan-600 to-green-600 rounded-2xl shadow-xl p-8 mb-8 text-white text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Join the Community</h2>
+            <p className="text-lg mb-2">Every week, I send one curated guide + one quick tip.</p>
+            <p className="text-xl font-bold mb-6">1,000+ growers subscribed. No spam. Just good content.</p>
+            <Link href="/blog#newsletter">
+              <button className="px-8 py-4 bg-white text-green-600 font-bold rounded-xl hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:scale-105 transform">
+                Get Weekly Tips →
+              </button>
             </Link>
           </div>
-        </Container>
-      </Section>
 
-      {/* Newsletter */}
-      <Section variant="light" padding="lg">
-        <Container>
-          <Newsletter />
-        </Container>
-      </Section>
+          {/* Connect */}
+          <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Let's Connect</h2>
+            <p className="text-gray-700 mb-6">Questions? Found a great resource?</p>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
+              <a href="mailto:hello@hydroponicscentral.com" className="flex items-center gap-2 text-green-600 hover:text-green-700 font-medium transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                </svg>
+                hello@hydroponicscentral.com
+              </a>
+              <a href="https://twitter.com/hydroponicscentral" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-green-600 hover:text-green-700 font-medium transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                @HydroponicsCentral
+              </a>
+            </div>
+            <p className="text-gray-600 text-sm italic">I actually read and respond. 💚</p>
+          </div>
+
+          {/* Signature */}
+          <div className="text-center mt-12 pt-8 border-t border-gray-200">
+            <p className="text-lg text-gray-600 font-semibold">
+              — Carl, Hydroponics Curator
+            </p>
+          </div>
+
+        </div>
+      </section>
     </div>
   );
 }

@@ -41,7 +41,7 @@ export const Newsletter: React.FC = () => {
           Get Weekly Hydroponics Tips
         </h3>
         <p className="text-vegetation-50 text-lg mb-8">
-          Join 5,000+ growers receiving expert advice, system reviews, and growing tips every week.
+          Join 1,000+ growers receiving expert advice, system reviews, and growing tips every week.
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
