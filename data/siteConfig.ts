@@ -6,13 +6,13 @@
 import { SiteConfig } from '@/types';
 
 export const siteConfig: SiteConfig = {
-  name: 'Hydroponics Blog',
-  title: 'HydroGrow - Your Complete Guide to Hydroponic Gardening',
+  name: 'Hydroponics Central',
+  title: 'Hydroponics Central - Your Complete Guide to Hydroponic Gardening',
   description: 'Learn everything about hydroponics - from beginner setups to advanced techniques. Grow fresh produce faster, cleaner, and year-round with our expert guides.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   
   author: {
-    name: 'Your Name', // Change this to your name
+    name: 'Carl', // Change this to your name
     bio: 'Hydroponic gardening enthusiast and educator. Helping people grow their own fresh food using modern soilless techniques.',
     avatar: '/images/avatar.jpg', // Add your avatar image
     social: {
