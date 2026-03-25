@@ -1,12 +1,11 @@
 // ============================================
 // FILE: components/blog/Newsletter.tsx
-// Newsletter with GREEN GRADIENT
+// Newsletter with GREEN GRADIENT + Server API
 // ============================================
 
 'use client';
 
 import React, { useState } from 'react';
-import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 
 export const Newsletter: React.FC = () => {
@@ -18,20 +17,42 @@ export const Newsletter: React.FC = () => {
     e.preventDefault();
     setStatus('loading');
 
-    // Simulate API call (you'll replace this with actual newsletter service later)
+    try {
+      // Call our Next.js API route (server-side)
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus('success');
+        
+        if (data.alreadySubscribed) {
+          setMessage('✅ You\'re already subscribed! Check your inbox for our emails.');
+        } else {
+          setMessage('🎉 Thanks for subscribing! Check your email to confirm.');
+        }
+        
+        setEmail('');
+      } else {
+        throw new Error(data.error || 'Something went wrong');
+      }
+    } catch (error) {
+      setStatus('error');
+      setMessage('Oops! Something went wrong. Please try again.');
+      console.error('Newsletter error:', error);
+    }
+
+    // Reset status after 5 seconds
     setTimeout(() => {
-      setStatus('success');
-      setMessage('Thanks for subscribing! Check your email to confirm.');
-      setEmail('');
-
-      // Reset after 5 seconds
-      setTimeout(() => {
-        setStatus('idle');
-        setMessage('');
-      }, 5000);
-    }, 1000);
-
-    // TODO: Integrate with actual newsletter service (EmailOctopus, MailerLite, etc.)
+      setStatus('idle');
+      setMessage('');
+    }, 5000);
   };
 
   return (
@@ -52,7 +73,7 @@ export const Newsletter: React.FC = () => {
             placeholder="Enter your email"
             required
             disabled={status === 'loading'}
-            className="bg-white flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-vegetation-300 disabled:opacity-50"
+            className="bg-white flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-vegetation-300 disabled:opacity-50 disabled:cursor-not-allowed"
           />
           <Button
             type="submit"
@@ -67,12 +88,14 @@ export const Newsletter: React.FC = () => {
 
         {/* Status Messages */}
         {status === 'success' && (
-          <p className="mt-4 text-green-200 font-semibold">{message}</p>
+          <div className="mt-4 p-4 bg-green-500/20 border border-green-400/30 rounded-lg">
+            <p className="text-white font-semibold">{message}</p>
+          </div>
         )}
         {status === 'error' && (
-          <p className="mt-4 text-red-200 font-semibold">
-            Something went wrong. Please try again.
-          </p>
+          <div className="mt-4 p-4 bg-red-500/20 border border-red-400/30 rounded-lg">
+            <p className="text-white font-semibold">{message}</p>
+          </div>
         )}
 
         <p className="text-vegetation-100 text-sm mt-4">
