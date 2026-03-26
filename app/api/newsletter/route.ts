@@ -9,9 +9,40 @@ export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json();
 
-    if (!email || !email.includes('@')) {
+    // Enhanced email validation
+    if (!email || typeof email !== 'string') {
       return NextResponse.json(
-        { error: 'Valid email is required' },
+        { error: 'Email is required' },
+        { status: 400 }
+      );
+    }
+
+    // Trim whitespace and convert to lowercase
+    const cleanEmail = email.trim().toLowerCase();
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(cleanEmail)) {
+      return NextResponse.json(
+        { error: 'Please enter a valid email address' },
+        { status: 400 }
+      );
+    }
+
+    // Block common fake/temporary email domains
+    const blockedDomains = [
+      'tempmail.com',
+      'guerrillamail.com', 
+      '10minutemail.com',
+      'throwaway.email',
+      'mailinator.com',
+      'trashmail.com'
+    ];
+    
+    const emailDomain = cleanEmail.split('@')[1];
+    if (blockedDomains.includes(emailDomain)) {
+      return NextResponse.json(
+        { error: 'Please use a permanent email address' },
         { status: 400 }
       );
     }
@@ -20,7 +51,7 @@ export async function POST(request: NextRequest) {
     const EMAILOCTOPUS_API_KEY = 'eo_1a8337b49b592b88ec8ee3837f2c33717dcc3a05337ee2c352fbe1431bdc1d9b';
     const LIST_ID = 'b3651b0a-205e-11f1-a886-af841e43e49a';
 
-    // Call EmailOctopus API
+    // Call EmailOctopus API with cleaned email
     const response = await fetch(
       `https://emailoctopus.com/api/1.6/lists/${LIST_ID}/contacts`,
       {
@@ -30,7 +61,7 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
           api_key: EMAILOCTOPUS_API_KEY,
-          email_address: email,
+          email_address: cleanEmail, // Use cleaned email
           status: 'SUBSCRIBED',
         }),
       }
@@ -44,10 +75,18 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
           { 
             success: true, 
-            message: 'You\'re already subscribed!',
+            message: 'You\'re already subscribed! Check your inbox for our emails.',
             alreadySubscribed: true 
           },
           { status: 200 }
+        );
+      }
+
+      // Handle invalid email from EmailOctopus
+      if (data.error?.code === 'INVALID_PARAMETERS') {
+        return NextResponse.json(
+          { error: 'Please enter a valid email address' },
+          { status: 400 }
         );
       }
 

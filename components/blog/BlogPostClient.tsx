@@ -632,7 +632,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
       {showTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 w-12 h-12 bg-vegetation-600 hover:bg-vegetation-700 text-white rounded-full shadow-xl hover:shadow-2xl transition-all flex items-center justify-center group z-40"
+          className="fixed bottom-8 right-8 w-12 h-12 bg-green-600 hover:bg-vegetation-700 text-white rounded-full shadow-xl hover:shadow-2xl transition-all flex items-center justify-center group z-40"
           aria-label="Scroll to top"
         >
           <svg className="w-5 h-5 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
