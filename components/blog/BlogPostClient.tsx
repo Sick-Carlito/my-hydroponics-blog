@@ -616,7 +616,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
           <span className="inline-block px-4 py-1.5 bg-white/20 text-white text-[11px] font-black uppercase tracking-widest rounded-full mb-6">Free Newsletter</span>
           <h2 className="text-4xl font-black text-white mb-4 leading-tight">Grow Smarter Every Week</h2>
           <p className="text-vegetation-100 text-lg mb-8 leading-relaxed">
-            Join 1,000+ growers getting expert tips, system guides, and troubleshooting help — every Tuesday. Free, always.
+            Join 1,000+ growers getting expert tips, system guides, and troubleshooting help.
           </p>
           <form className="flex flex-col sm:flex-row gap-3" onSubmit={e => e.preventDefault()}>
             <input type="email" placeholder="your@email.com" className="flex-1 px-6 py-4 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-white/30 shadow-lg" required />
