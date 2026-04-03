@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://hydroponics-central.vercel.app/sitemap.xml
