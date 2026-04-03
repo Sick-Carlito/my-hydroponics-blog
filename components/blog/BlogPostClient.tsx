@@ -139,42 +139,53 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
     console.log('   isPros:', isPros, 'isCons:', isCons);
 
     if (isPros || isCons) {
-      console.log('✅ Creating', isPros ? 'PROS' : 'CONS', 'box!');
-      
-      const boxColor = isPros
-        ? 'from-green-50 to-emerald-50 border-green-300'
-        : 'from-red-50 to-rose-50 border-red-300';
-      const iconColor = isPros ? 'text-green-600' : 'text-red-600';
-      const headerColor = isPros ? 'bg-green-500' : 'bg-red-500';
-      const icon = isPros
-        ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>'
-        : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>';
-      
-      const title = isPros ? 'Pros' : 'Cons';
-      
-      // Skip first item if it's just "Pros:" or "Cons:"
+      const buildBox = (boxIsPros: boolean, boxItems: string[]) => {
+        const boxColor = boxIsPros
+          ? 'from-green-50 to-emerald-50 border-green-300'
+          : 'from-red-50 to-rose-50 border-red-300';
+        const iconColor = boxIsPros ? 'text-green-600' : 'text-red-600';
+        const headerColor = boxIsPros ? 'bg-green-500' : 'bg-red-500';
+        const icon = boxIsPros
+          ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>'
+          : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>';
+        const title = boxIsPros ? 'Pros' : 'Cons';
+
+        const body = boxItems.map((text: string) => `<li class="flex items-start gap-3 text-gray-700 text-[15px] leading-relaxed">
+          <svg class="w-5 h-5 ${iconColor} flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">${icon}</svg>
+          <span>${text}</span>
+        </li>`).join('');
+
+        return `<div class="${boxIsPros ? 'pros-box' : 'cons-box'} p-6 rounded-2xl bg-gradient-to-br ${boxColor} border-2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg ${headerColor} flex items-center justify-center flex-shrink-0 shadow-sm">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">${icon}</svg>
+            </div>
+            <h3 class="text-lg font-bold ${boxIsPros ? 'text-green-800' : 'text-red-800'}">${title}</h3>
+          </div>
+          <ul class="space-y-2.5">${body}</ul>
+        </div>`;
+      };
+
       const skipFirst = firstItemText.match(/^(pros|cons):?$/i);
       const startIndex = skipFirst ? 1 : 0;
-      
-      const body = items.slice(startIndex).map((text: string) => {
-        // Clean up the text (remove bold markers for Pros:/Cons: if present)
-        const cleanText = text.replace(/^\*?\*?(pros|cons):?\*?\*?\s*/i, '');
-        
-        return `<li class="flex items-start gap-3 text-gray-700 text-[15px] leading-relaxed">
-          <svg class="w-5 h-5 ${iconColor} flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">${icon}</svg>
-          <span>${cleanText}</span>
-        </li>`;
-      }).join('');
 
-      return `<div class="${isPros ? 'pros-box' : 'cons-box'} p-6 rounded-2xl bg-gradient-to-br ${boxColor} border-2">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-8 h-8 rounded-lg ${headerColor} flex items-center justify-center flex-shrink-0 shadow-sm">
-            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">${icon}</svg>
-          </div>
-          <h3 class="text-lg font-bold ${isPros ? 'text-green-800' : 'text-red-800'}">${title}</h3>
-        </div>
-        <ul class="space-y-2.5">${body}</ul>
-      </div>`;
+      if (isPros) {
+        // Check if a "Cons:" label appears later in the same list token
+        const consIdx = items.findIndex((text: string, i: number) =>
+          i >= startIndex && /^(cons|disadvantages|drawbacks):?$/i.test(text.trim())
+        );
+
+        if (consIdx !== -1) {
+          return `<div class="flex flex-col md:flex-row gap-6 my-8">` +
+            buildBox(true, items.slice(startIndex, consIdx)) +
+            buildBox(false, items.slice(consIdx + 1)) +
+            `</div>`;
+        }
+
+        return buildBox(true, items.slice(startIndex));
+      }
+
+      return buildBox(false, items.slice(startIndex));
     }
 
     // Regular list with green checkmarks
