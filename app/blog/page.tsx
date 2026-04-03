@@ -12,8 +12,19 @@ import { BlogSearch } from '@/components/blog/BlogSearch';
 import { getAllBlogPosts, getFeaturedPosts } from '@/lib/mdx';
 
 export const metadata = {
-  title: 'Blog - HydroGrow',
-  description: 'Learn everything about hydroponics with our expert guides, tips, and tutorials.',
+  title: 'Blog - Hydroponics Central | Expert Guides & Tips',
+  description: 'Expert hydroponics guides, system comparisons, nutrient tutorials, and growing tips. Everything you need to grow fresh produce with hydroponics.',
+  keywords: ['hydroponics blog', 'hydroponic guides', 'DWC system', 'Kratky method', 'indoor growing', 'hydroponic nutrients'],
+  openGraph: {
+    title: 'Hydroponics Central Blog - Expert Guides & Tips',
+    description: 'Expert hydroponics guides, system comparisons, nutrient tutorials, and growing tips.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hydroponics Central Blog - Expert Guides & Tips',
+    description: 'Expert hydroponics guides, system comparisons, nutrient tutorials, and growing tips.',
+  },
 };
 
 export default async function BlogPage() {

@@ -1,5 +1,21 @@
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Carl - Hydroponics Central',
+  description: 'Meet Carl, the curator behind Hydroponics Central. Not an expert — just someone who reads everything about hydroponics so you don\'t have to.',
+  openGraph: {
+    title: 'About Carl - Hydroponics Central',
+    description: 'Meet Carl, the curator behind Hydroponics Central. Not an expert — just someone who reads everything about hydroponics so you don\'t have to.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Carl - Hydroponics Central',
+    description: 'Meet Carl, the curator behind Hydroponics Central.',
+  },
+};
 
 export default function AboutPage() {
   return (

@@ -8,6 +8,9 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
+import { siteConfig } from '@/data/siteConfig';
+
+const baseUrl = siteConfig.url;
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -17,30 +20,31 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'HydroGrow - Your Hydroponics Growing Guide',
-    template: '%s | HydroGrow',
+    default: 'Hydroponics Central - Your Complete Guide to Hydroponic Gardening',
+    template: '%s | Hydroponics Central',
   },
-  description: 'Learn everything about hydroponics with expert guides, system reviews, and growing tips.',
-  keywords: ['hydroponics', 'gardening', 'growing', 'plants', 'vegetables', 'indoor growing'],
-  authors: [{ name: 'HydroGrow Team' }],
+  description: 'Learn everything about hydroponics — from beginner setups to advanced techniques. Grow fresh produce faster, cleaner, and year-round with our expert guides.',
+  keywords: ['hydroponics', 'hydroponic gardening', 'DWC', 'indoor growing', 'growing guides', 'plants', 'vegetables'],
+  authors: [{ name: 'Carl' }],
+  metadataBase: new URL(baseUrl),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://yourdomain.com',
-    siteName: 'HydroGrow',
+    url: baseUrl,
+    siteName: 'Hydroponics Central',
     images: [
       {
-        url: 'https://yourdomain.com/og-image.jpg',
+        url: `${baseUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'HydroGrow - Hydroponics Growing Guide',
+        alt: 'Hydroponics Central - Hydroponic Gardening Guides',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@yourtwitterhandle',
-    creator: '@yourtwitterhandle',
+    site: '@HydroponicsCentral',
+    creator: '@HydroponicsCentral',
   },
   robots: {
     index: true,
@@ -71,8 +75,42 @@ export default function RootLayout({
           Skip to main content
         </a>
 
+        {/* Organization + WebSite schema for Google E-E-A-T */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'Hydroponics Central',
+                url: baseUrl,
+                logo: `${baseUrl}/og-image.jpg`,
+                description: 'Curated hydroponics guides and resources for growers of all levels.',
+                founder: { '@type': 'Person', name: 'Carl' },
+                sameAs: [
+                  'https://twitter.com/HydroponicsCentral',
+                  'https://facebook.com/hydrogrow',
+                  'https://instagram.com/hydrogrow',
+                ],
+              },
+              {
+                '@context': 'https://schema.org',
+                '@type': 'WebSite',
+                name: 'Hydroponics Central',
+                url: baseUrl,
+                potentialAction: {
+                  '@type': 'SearchAction',
+                  target: `${baseUrl}/blog?q={search_term_string}`,
+                  'query-input': 'required name=search_term_string',
+                },
+              },
+            ]),
+          }}
+        />
+
         <Navigation />
-        
+
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>

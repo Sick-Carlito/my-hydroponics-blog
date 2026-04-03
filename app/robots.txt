@@ -1,19 +1,6 @@
-// ============================================
-// FILE: app/robots.ts
-// Robots.txt for crawler instructions
-// ============================================
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
 
-import { MetadataRoute } from 'next';
-
-export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/admin/'],
-      },
-    ],
-    sitemap: 'https://yourdomain.com/sitemap.xml',
-  };
-}
+Sitemap: https://yourdomain.com/sitemap.xml

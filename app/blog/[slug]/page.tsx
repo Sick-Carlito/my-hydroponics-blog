@@ -10,6 +10,9 @@ import { Newsletter } from '@/components/blog/Newsletter';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { getAllBlogPosts, getBlogPostBySlug, getRelatedPosts } from '@/lib/mdx';
+import { siteConfig } from '@/data/siteConfig';
+
+const baseUrl = siteConfig.url;
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
@@ -31,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const publishedTime = new Date(post.date).toISOString();
-  const url = `https://yourdomain.com/blog/${post.slug}`;
+  const url = `${baseUrl}/blog/${post.slug}`;
 
   return {
     title: post.title,
@@ -47,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url,
       images: [
         {
-          url: post.image || `https://yourdomain.com/og-default.jpg`,
+          url: post.image || `${baseUrl}/og-default.jpg`,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -58,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [post.image || `https://yourdomain.com/og-default.jpg`],
+      images: [post.image || `${baseUrl}/og-default.jpg`],
     },
     alternates: {
       canonical: url,
@@ -77,44 +80,82 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   // Get related posts
   const relatedPosts = await getRelatedPosts(post, 3);
 
-  // JSON-LD structured data for rich snippets
-  const jsonLd = {
+  // Article JSON-LD
+  const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
-    image: post.image || 'https://yourdomain.com/default-og.jpg',
+    image: post.image || `${baseUrl}/og-image.jpg`,
     datePublished: new Date(post.date).toISOString(),
     dateModified: new Date(post.date).toISOString(),
+    inLanguage: 'en',
     author: {
       '@type': 'Person',
-      name: post.author?.name || 'HydroGrow Team',
-      url: 'https://yourdomain.com',
+      name: post.author?.name || 'Carl',
+      url: baseUrl,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'HydroGrow',
+      name: 'Hydroponics Central',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://yourdomain.com/logo.png',
+        url: `${baseUrl}/og-image.jpg`,
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://yourdomain.com/blog/${post.slug}`,
+      '@id': `${baseUrl}/blog/${post.slug}`,
     },
     keywords: post.tags?.join(', '),
     articleSection: post.category,
     wordCount: post.content.split(/\s+/).length,
   };
 
+  // FAQPage JSON-LD (only when post has FAQs — earns Google "People Also Ask" rich results)
+  const faqSchema = post.faqs && post.faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: post.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  } : null;
+
+  // BreadcrumbList JSON-LD
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${baseUrl}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `${baseUrl}/blog/${post.slug}` },
+    ],
+  };
+
   return (
     <>
-      {/* JSON-LD for SEO */}
+      {/* Article schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      {/* Breadcrumb schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {/* FAQ schema — only rendered when post has FAQs */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       {/* Blog Post Content */}
       <BlogPostClient post={post} />
