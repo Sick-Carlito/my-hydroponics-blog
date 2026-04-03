@@ -324,7 +324,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
   };
 
   // ✅ FIX: Use custom FAQs from post data, or default fallback
-  const faqs = (post as any).faqs || [
+  const faqs = post.faqs || [
     { q: 'How long until I see results from hydroponics?',
       a: 'Most leafy greens grow 30–50% faster than soil. Lettuce is harvestable in 4–6 weeks; herbs in 3–4 weeks. You\'ll see root development and fresh leaves within days of starting.' },
     { q: 'What\'s the minimum budget to start?',

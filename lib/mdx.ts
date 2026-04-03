@@ -45,6 +45,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
         },
         featured: data.featured || false,
         image: data.image,
+        faqs: data.faqs || [],
       } as BlogPost;
     });
 
@@ -91,6 +92,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       },
       featured: data.featured || false,
       image: data.image,
+      faqs: data.faqs || [],
     } as BlogPost;
   } catch (error) {
     console.error(`Error reading post ${slug}:`, error);

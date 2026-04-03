@@ -15,6 +15,7 @@ export interface BlogPost {
   author?: Author;
   image?: string;
   featured?: boolean;
+  faqs?: { q: string; a: string }[];
 }
 
 export interface Author {
