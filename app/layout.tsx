@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   keywords: ['hydroponics', 'hydroponic gardening', 'DWC', 'indoor growing', 'growing guides', 'plants', 'vegetables'],
   authors: [{ name: 'Carl' }],
   metadataBase: new URL(baseUrl),
+  alternates: {
+    types: {
+      'application/rss+xml': `${baseUrl}/feed.xml`,
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
