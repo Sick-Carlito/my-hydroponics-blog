@@ -16,6 +16,7 @@ export interface BlogPost {
   image?: string;
   featured?: boolean;
   faqs?: { q: string; a: string }[];
+  takeaways?: string[];
 }
 
 export interface Author {

@@ -344,13 +344,15 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
       a: 'Not always. A sunny south-facing windowsill works for herbs. For consistent production, a $25–$50 LED grow light covers a small system. Full-spectrum LED panels are efficient and long-lasting.' },
   ];
 
-  const takeaways = [
-    'Hydroponics grows plants 30–50% faster than soil',
-    'Start with lettuce or herbs for quickest success',
-    'Basic systems cost $30–$150 to get started',
-    'Monitor pH (5.5–6.5) and nutrients weekly',
-    'Results visible within days, harvest in weeks',
-  ];
+  const takeaways = post.takeaways && post.takeaways.length > 0
+    ? post.takeaways
+    : [
+        'Hydroponics grows plants 30–50% faster than soil',
+        'Start with lettuce or herbs for quickest success',
+        'Basic systems cost $30–$150 to get started',
+        'Monitor pH (5.5–6.5) and nutrients weekly',
+        'Results visible within days, harvest in weeks',
+      ];
 
   return (
     <div className="min-h-screen bg-white">
