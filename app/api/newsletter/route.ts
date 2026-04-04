@@ -48,8 +48,15 @@ export async function POST(request: NextRequest) {
     }
 
     // EmailOctopus API credentials
-    const EMAILOCTOPUS_API_KEY = 'eo_1a8337b49b592b88ec8ee3837f2c33717dcc3a05337ee2c352fbe1431bdc1d9b';
-    const LIST_ID = 'b3651b0a-205e-11f1-a886-af841e43e49a';
+    const EMAILOCTOPUS_API_KEY = process.env.EMAILOCTOPUS_API_KEY;
+    const LIST_ID = process.env.EMAILOCTOPUS_LIST_ID;
+
+    if (!EMAILOCTOPUS_API_KEY || !LIST_ID) {
+      return NextResponse.json(
+        { error: 'Newsletter service not configured' },
+        { status: 500 }
+      );
+    }
 
     // Call EmailOctopus API with cleaned email
     const response = await fetch(
