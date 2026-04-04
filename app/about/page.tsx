@@ -220,9 +220,15 @@ export default function AboutPage() {
 
           {/* Signature */}
           <div className="text-center mt-12 pt-8 border-t border-gray-200">
-            <p className="text-lg text-gray-600 font-semibold">
+            <p className="text-lg text-gray-600 font-semibold mb-3">
               — Carl, Hydroponics Curator
             </p>
+            <Link
+              href="/author/carl"
+              className="inline-flex items-center gap-2 text-vegetation-600 hover:text-vegetation-700 font-semibold text-sm transition-colors"
+            >
+              View all my articles →
+            </Link>
           </div>
 
         </div>

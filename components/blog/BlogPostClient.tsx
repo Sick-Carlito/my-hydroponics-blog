@@ -402,15 +402,15 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
 
           {/* Meta */}
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pb-10 border-b border-gray-200">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-vegetation-500 to-lime-400 flex items-center justify-center text-white font-black shadow">
+            <Link href="/author/carl" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-vegetation-500 to-lime-400 flex items-center justify-center text-white font-black shadow group-hover:shadow-md transition-shadow">
                 {(post.author?.name || 'H')[0]}
               </div>
               <div>
-                <p className="font-semibold text-gray-800 text-sm leading-none">{post.author?.name || 'HydroGrow Team'}</p>
-                <p className="text-gray-400 text-xs mt-0.5">Author</p>
+                <p className="font-semibold text-gray-800 text-sm leading-none group-hover:text-vegetation-600 transition-colors">{post.author?.name || 'Carl'}</p>
+                <p className="text-gray-400 text-xs mt-0.5">Hydroponics Curator</p>
               </div>
-            </div>
+            </Link>
             <div className="h-4 w-px bg-gray-200 hidden sm:block" />
             <time dateTime={post.date} className="flex items-center gap-1.5 text-sm text-gray-500">
               <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
