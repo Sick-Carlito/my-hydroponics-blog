@@ -169,27 +169,20 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
 
     if (isPros || /^cons:?$/i.test(firstItemText.trim())) {
       const buildBox = (boxIsPros: boolean, boxHtmlItems: string[]) => {
-        const boxBg     = boxIsPros ? '#f0fdf4' : '#fff5f5';
-        const boxBorder = boxIsPros ? '#86efac' : '#fca5a5';
-        const headerBg  = boxIsPros ? '#16a34a' : '#dc2626';
-        const titleColor = boxIsPros ? '#14532d' : '#7f1d1d';
-        const title     = boxIsPros ? 'Pros' : 'Cons';
-        const headerIcon = boxIsPros ? '&#10003;' : '&#10005;';
-
+        const title = boxIsPros ? 'Pros' : 'Cons';
         const marker = boxIsPros
-          ? `<span style="flex-shrink:0;color:#16a34a;font-size:16px;font-weight:900;margin-top:1px">&#10003;</span>`
-          : `<span style="flex-shrink:0;color:#dc2626;font-size:16px;font-weight:900;margin-top:1px">&#10005;</span>`;
-        const body = boxHtmlItems.map(html => `<li style="display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.7;color:#374151;margin-bottom:8px">
-          ${marker}
-          <span>${html}</span>
-        </li>`).join('');
+          ? `<span class="blog-box-check">&#10003;</span>`
+          : `<span class="blog-box-cross">&#10005;</span>`;
+        const body = boxHtmlItems.map(html =>
+          `<li class="blog-box-li">${marker}<span>${html}</span></li>`
+        ).join('');
 
-        return `<div class="${boxIsPros ? 'pros-box' : 'cons-box'}" style="flex:1;padding:24px;border-radius:16px;background:${boxBg};border:2px solid ${boxBorder}">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-            <div style="width:32px;height:32px;border-radius:8px;background:${headerBg};color:#fff;font-size:16px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">${headerIcon}</div>
-            <h3 style="font-size:18px;font-weight:700;color:${titleColor};margin:0">${title}</h3>
+        return `<div class="${boxIsPros ? 'blog-pros-box' : 'blog-cons-box'}">
+          <div class="blog-box-header">
+            <div class="${boxIsPros ? 'blog-box-icon-pros' : 'blog-box-icon-cons'}">${boxIsPros ? '&#10003;' : '&#10005;'}</div>
+            <h3 class="${boxIsPros ? 'blog-box-title-pros' : 'blog-box-title-cons'}">${title}</h3>
           </div>
-          <ul style="margin:0;padding:0;list-style:none">${body}</ul>
+          <ul class="blog-box-ul">${body}</ul>
         </div>`;
       };
 
@@ -201,7 +194,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
           i >= startIndex && /^(cons|disadvantages|drawbacks):?$/i.test(text.trim())
         );
         if (consIdx !== -1) {
-          return `<div style="display:flex;flex-wrap:wrap;gap:24px;margin:2rem 0">` +
+          return `<div class="blog-pros-cons-wrapper">` +
             buildBox(true, htmlItems.slice(startIndex, consIdx)) +
             buildBox(false, htmlItems.slice(consIdx + 1)) +
             `</div>`;
@@ -214,18 +207,18 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
     // Regular list
     const body = htmlItems.map((html: string, i: number) => {
       if (ordered) {
-        return `<li style="display:flex;align-items:flex-start;gap:14px;color:#374151;font-size:17px;line-height:1.85;margin-bottom:12px">
-          <span style="flex-shrink:0;min-width:28px;height:28px;border-radius:50%;background:#16a34a;color:#fff;font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-top:2px">${i + 1}</span>
-          <span style="padding-top:3px">${html}</span>
+        return `<li class="blog-li">
+          <span class="blog-number">${i + 1}</span>
+          <span>${html}</span>
         </li>`;
       }
-      return `<li style="display:flex;align-items:flex-start;gap:12px;color:#374151;font-size:17px;line-height:1.85;margin-bottom:12px">
-        <span style="flex-shrink:0;width:8px;height:8px;border-radius:50%;background:#16a34a;margin-top:10px;display:inline-block"></span>
+      return `<li class="blog-li">
+        <span class="blog-bullet"></span>
         <span>${html}</span>
       </li>`;
     }).join('');
 
-    return `<${ordered ? 'ol' : 'ul'} style="margin:1.5rem 0;padding:0;list-style:none">${body}</${ordered ? 'ol' : 'ul'}>`;
+    return `<${ordered ? 'ol' : 'ul'} class="${ordered ? 'blog-ol' : 'blog-ul'}">${body}</${ordered ? 'ol' : 'ul'}>`;
   };
 
   renderer.link = ({ href, tokens }: { href: string; tokens: any[] }) => {
