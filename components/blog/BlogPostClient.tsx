@@ -169,27 +169,27 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
 
     if (isPros || /^cons:?$/i.test(firstItemText.trim())) {
       const buildBox = (boxIsPros: boolean, boxHtmlItems: string[]) => {
-        const boxColor   = boxIsPros ? 'from-green-50 to-emerald-50 border-green-300' : 'from-red-50 to-rose-50 border-red-300';
-        const headerColor = boxIsPros ? 'bg-green-500' : 'bg-red-500';
-        const iconPath   = boxIsPros
-          ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>'
-          : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>';
-        const title = boxIsPros ? 'Pros' : 'Cons';
+        const boxBg     = boxIsPros ? '#f0fdf4' : '#fff5f5';
+        const boxBorder = boxIsPros ? '#86efac' : '#fca5a5';
+        const headerBg  = boxIsPros ? '#16a34a' : '#dc2626';
+        const titleColor = boxIsPros ? '#14532d' : '#7f1d1d';
+        const title     = boxIsPros ? 'Pros' : 'Cons';
+        const headerIcon = boxIsPros ? '&#10003;' : '&#10005;';
 
-        const iconStroke = boxIsPros ? '#16a34a' : '#dc2626';
+        const marker = boxIsPros
+          ? `<span style="flex-shrink:0;color:#16a34a;font-size:16px;font-weight:900;margin-top:1px">&#10003;</span>`
+          : `<span style="flex-shrink:0;color:#dc2626;font-size:16px;font-weight:900;margin-top:1px">&#10005;</span>`;
         const body = boxHtmlItems.map(html => `<li style="display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.7;color:#374151;margin-bottom:8px">
-          <svg style="width:20px;height:20px;flex-shrink:0;margin-top:2px" fill="none" stroke="${iconStroke}" viewBox="0 0 24 24">${iconPath}</svg>
+          ${marker}
           <span>${html}</span>
         </li>`).join('');
 
-        return `<div class="${boxIsPros ? 'pros-box' : 'cons-box'} p-6 rounded-2xl bg-gradient-to-br ${boxColor} border-2">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-8 h-8 rounded-lg ${headerColor} flex items-center justify-center flex-shrink-0 shadow-sm">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">${iconPath}</svg>
-            </div>
-            <h3 class="text-lg font-bold ${boxIsPros ? 'text-green-800' : 'text-red-800'}">${title}</h3>
+        return `<div class="${boxIsPros ? 'pros-box' : 'cons-box'}" style="flex:1;padding:24px;border-radius:16px;background:${boxBg};border:2px solid ${boxBorder}">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+            <div style="width:32px;height:32px;border-radius:8px;background:${headerBg};color:#fff;font-size:16px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">${headerIcon}</div>
+            <h3 style="font-size:18px;font-weight:700;color:${titleColor};margin:0">${title}</h3>
           </div>
-          <ul class="space-y-2.5">${body}</ul>
+          <ul style="margin:0;padding:0;list-style:none">${body}</ul>
         </div>`;
       };
 
@@ -201,7 +201,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
           i >= startIndex && /^(cons|disadvantages|drawbacks):?$/i.test(text.trim())
         );
         if (consIdx !== -1) {
-          return `<div class="flex flex-col md:flex-row gap-6 my-8">` +
+          return `<div style="display:flex;flex-wrap:wrap;gap:24px;margin:2rem 0">` +
             buildBox(true, htmlItems.slice(startIndex, consIdx)) +
             buildBox(false, htmlItems.slice(consIdx + 1)) +
             `</div>`;
@@ -214,15 +214,13 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
     // Regular list
     const body = htmlItems.map((html: string, i: number) => {
       if (ordered) {
-        return `<li style="display:flex;align-items:flex-start;gap:12px;color:#4b5563;font-size:17px;line-height:1.9;margin-bottom:10px">
-          <span style="flex-shrink:0;margin-top:4px;width:24px;height:24px;border-radius:50%;background:#22c55e;color:#ffffff;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center">${i + 1}</span>
-          <span>${html}</span>
+        return `<li style="display:flex;align-items:flex-start;gap:14px;color:#374151;font-size:17px;line-height:1.85;margin-bottom:12px">
+          <span style="flex-shrink:0;min-width:28px;height:28px;border-radius:50%;background:#16a34a;color:#fff;font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-top:2px">${i + 1}</span>
+          <span style="padding-top:3px">${html}</span>
         </li>`;
       }
-      return `<li style="display:flex;align-items:flex-start;gap:12px;color:#4b5563;font-size:17px;line-height:1.9;margin-bottom:10px">
-        <svg style="width:20px;height:20px;color:#22c55e;flex-shrink:0;margin-top:4px" fill="none" stroke="#22c55e" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-        </svg>
+      return `<li style="display:flex;align-items:flex-start;gap:12px;color:#374151;font-size:17px;line-height:1.85;margin-bottom:12px">
+        <span style="flex-shrink:0;width:8px;height:8px;border-radius:50%;background:#16a34a;margin-top:10px;display:inline-block"></span>
         <span>${html}</span>
       </li>`;
     }).join('');
