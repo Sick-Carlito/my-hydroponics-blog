@@ -421,10 +421,10 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pb-10 border-b border-gray-200">
             <Link href="/author/carl" className="flex items-center gap-3 group">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-vegetation-500 to-lime-400 flex items-center justify-center text-white font-black shadow group-hover:shadow-md transition-shadow">
-                {(post.author?.name || 'H')[0]}
+                C
               </div>
               <div>
-                <p className="font-semibold text-gray-800 text-sm leading-none group-hover:text-vegetation-600 transition-colors">{post.author?.name || 'Carl'}</p>
+                <p className="font-semibold text-gray-800 text-sm leading-none group-hover:text-vegetation-600 transition-colors">Carl</p>
                 <p className="text-gray-400 text-xs mt-0.5">Hydroponics Curator</p>
               </div>
             </Link>
@@ -455,6 +455,20 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
             </div>
           )}
         </div>
+
+        {/* Hero image */}
+        {post.image && (
+          <div className="max-w-5xl mx-auto px-5 sm:px-8 pb-14">
+            <figure className="rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full object-cover max-h-[520px]"
+                loading="eager"
+              />
+            </figure>
+          </div>
+        )}
       </header>
 
       {/* Body */}
