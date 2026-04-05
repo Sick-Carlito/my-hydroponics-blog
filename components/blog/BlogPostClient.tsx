@@ -25,23 +25,65 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
   const [wordCount, setWordCount]   = useState(0);
   const contentRef                  = useRef<HTMLDivElement>(null);
 
+  /* ── renderInline: recursively renders inline token arrays to HTML ── */
+  const renderInline = (tokens: any[]): string => {
+    if (!tokens || tokens.length === 0) return '';
+    return tokens.map(t => {
+      switch (t.type) {
+        case 'text':
+          return t.tokens ? renderInline(t.tokens) : (t.text ?? t.raw ?? '');
+        case 'escape':
+          return t.text ?? '';
+        case 'strong':
+          return `<strong class="font-bold text-gray-900">${renderInline(t.tokens)}</strong>`;
+        case 'em':
+          return `<em class="italic text-gray-700">${renderInline(t.tokens)}</em>`;
+        case 'del':
+          return `<del>${renderInline(t.tokens)}</del>`;
+        case 'link': {
+          const isExternal = t.href?.startsWith('http');
+          const linkText = renderInline(t.tokens);
+          return `<a href="${t.href}" class="text-vegetation-600 font-medium underline decoration-vegetation-200 underline-offset-2 hover:decoration-vegetation-500 hover:text-vegetation-800 transition-all"${isExternal ? ' target="_blank" rel="noopener noreferrer"' : ''}>${linkText}</a>`;
+        }
+        case 'image':
+          return `<figure class="my-10"><img src="${t.href}" alt="${t.text || ''}" class="w-full rounded-2xl shadow-xl" loading="lazy"/>${t.title ? `<figcaption class="text-center text-sm text-gray-400 mt-3 italic">${t.title}</figcaption>` : ''}</figure>`;
+        case 'codespan':
+          return `<code class="px-1.5 py-0.5 bg-vegetation-100 text-vegetation-700 rounded font-mono text-[0.875em] font-semibold">${t.text}</code>`;
+        case 'br':
+          return '<br>';
+        default:
+          return t.raw ?? t.text ?? '';
+      }
+    }).join('');
+  };
+
+  /* ── getItemText: extracts plain text from a list item for pros/cons detection ── */
+  const getItemText = (item: any): string => {
+    if (!item.tokens || item.tokens.length === 0) return item.text || '';
+    return item.tokens.map((t: any) => {
+      if (t.type === 'text') return t.text || '';
+      if (t.type === 'paragraph') return t.tokens?.map((tt: any) => tt.text || tt.raw || '').join('') || t.text || '';
+      return t.text || t.raw || '';
+    }).join('');
+  };
+
+  /* ── getItemHtml: renders a list item's content as HTML ── */
+  const getItemHtml = (item: any): string => {
+    if (!item.tokens || item.tokens.length === 0) return item.text || '';
+    return item.tokens.map((t: any) => {
+      if (t.type === 'text') return renderInline(t.tokens || [{ type: 'text', text: t.text }]);
+      if (t.type === 'paragraph') return renderInline(t.tokens || []);
+      return renderInline([t]);
+    }).join('');
+  };
+
   /* ── Configure marked renderer ── */
   const renderer = new marked.Renderer();
 
-  // ✅ FIX: Proper bold and italic rendering
-  renderer.strong = ({ tokens }: { tokens: any[] }) => {
-    const text = tokens.map(t => t.text || t.raw).join('');
-    return `<strong class="font-bold text-gray-900">${text}</strong>`;
-  };
-
-  renderer.em = ({ tokens }: { tokens: any[] }) => {
-    const text = tokens.map(t => t.text || t.raw).join('');
-    return `<em class="italic">${text}</em>`;
-  };
-
   renderer.heading = ({ tokens, depth }: { tokens: any[]; depth: number }) => {
-    const text = tokens.map(t => t.text || t.raw).join('');
-    const id = text.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-');
+    const text = renderInline(tokens);
+    const plainText = tokens.map(t => t.text || t.raw || '').join('');
+    const id = plainText.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-');
     const classes: Record<number, string> = {
       1: 'text-4xl font-black text-gray-950 mt-16 mb-6 leading-tight scroll-mt-28',
       2: 'text-3xl font-extrabold text-gray-900 mt-14 mb-5 leading-tight scroll-mt-28',
@@ -55,21 +97,27 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
   };
 
   renderer.paragraph = ({ tokens }: { tokens: any[] }) => {
-    const text = tokens.map(t => t.text || t.raw).join('');
-    return `<p class="text-gray-600 text-[17px] leading-[1.9] mb-6">${text}</p>`;
+    // Image-only paragraph — render as figure, not wrapped in <p>
+    if (tokens.length === 1 && tokens[0].type === 'image') {
+      const img = tokens[0];
+      return `<figure class="my-10">
+        <img src="${img.href}" alt="${img.text || ''}" class="w-full rounded-2xl shadow-xl" loading="lazy"/>
+        ${img.title ? `<figcaption class="text-center text-sm text-gray-400 mt-3 italic">${img.title}</figcaption>` : ''}
+        ${img.text ? `<p class="text-center text-xs text-gray-400 mt-2 italic">${img.text}</p>` : ''}
+      </figure>`;
+    }
+    return `<p class="text-gray-600 text-[17px] leading-[1.9] mb-6">${renderInline(tokens)}</p>`;
   };
 
-  // ✅ ENHANCED: Info boxes (blockquotes)
   renderer.blockquote = ({ tokens }: { tokens: any[] }) => {
     const text = tokens.map(t => {
-      if (t.type === 'paragraph') return t.tokens.map((tt: any) => tt.text || tt.raw).join('');
-      return t.text || t.raw;
+      if (t.type === 'paragraph') return renderInline(t.tokens || []);
+      return renderInline(t.tokens || [{ type: 'text', text: t.text || t.raw || '' }]);
     }).join('');
-    
-    // Detect type of info box
+
     let boxClass = 'from-vegetation-50 to-lime-50/60 border-vegetation-500 text-vegetation-900';
     let icon = '<path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>';
-    
+
     if (text.includes('💡') || text.includes('Pro Tip')) {
       boxClass = 'from-blue-50 to-cyan-50/60 border-blue-500 text-blue-900';
       icon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>';
@@ -83,7 +131,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
       boxClass = 'from-cyan-50 to-teal-50/60 border-cyan-500 text-cyan-900';
       icon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>';
     }
-    
+
     return `<blockquote class="relative my-10 pl-8 py-6 bg-gradient-to-r ${boxClass} border-l-4 rounded-r-2xl overflow-hidden">
       <svg class="absolute top-4 right-4 w-10 h-10 opacity-20" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">${icon}</svg>
       <div class="text-lg font-semibold leading-relaxed pr-12">${text}</div>
@@ -106,59 +154,38 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
   renderer.codespan = ({ text }: { text: string }) =>
     `<code class="px-1.5 py-0.5 bg-vegetation-100 text-vegetation-700 rounded font-mono text-[0.875em] font-semibold">${text}</code>`;
 
-  // ✅ ENHANCED: Green checkmark bullets + Pros/Cons detection
   renderer.list = (token: any) => {
     const ordered = token.ordered;
-    
-    // Get raw text from items (before bold/italic processing)
-    const items = token.items.map((item: any) => {
-      const text = item.tokens?.map((t: any) => t.text || t.raw).join('') || item.text || '';
-      return text;
-    });
 
-    // Also check the raw token text (includes ** markers)
-    const firstItemRaw = token.items[0]?.tokens?.map((t: any) => t.raw || t.text).join('') || '';
-    const firstItemText = items[0]?.toLowerCase() || '';
-    
-    // DEBUG: Log what we're checking
-    console.log('📋 Checking list. First item:', items[0]);
-    console.log('   First item RAW:', firstItemRaw);
-    console.log('   Lowercase:', firstItemText);
-    
-    // Check both processed and raw text
-    const isPros = firstItemText.includes('pros') || 
-                   firstItemRaw.toLowerCase().includes('**pros') ||
-                   firstItemText.includes('advantages') || 
+    // Get plain text for pros/cons detection, HTML for rendering
+    const plainItems = token.items.map(getItemText);
+    const htmlItems  = token.items.map(getItemHtml);
+
+    const firstItemText = plainItems[0]?.toLowerCase() || '';
+
+    const isPros = /^pros:?$/i.test(firstItemText.trim()) ||
+                   firstItemText.includes('advantages') ||
                    firstItemText.includes('benefits');
-                   
-    const isCons = firstItemText.includes('cons') || 
-                   firstItemRaw.toLowerCase().includes('**cons') ||
-                   firstItemText.includes('disadvantages') || 
-                   firstItemText.includes('drawbacks');
 
-    console.log('   isPros:', isPros, 'isCons:', isCons);
-
-    if (isPros || isCons) {
-      const buildBox = (boxIsPros: boolean, boxItems: string[]) => {
-        const boxColor = boxIsPros
-          ? 'from-green-50 to-emerald-50 border-green-300'
-          : 'from-red-50 to-rose-50 border-red-300';
-        const iconColor = boxIsPros ? 'text-green-600' : 'text-red-600';
+    if (isPros || /^cons:?$/i.test(firstItemText.trim())) {
+      const buildBox = (boxIsPros: boolean, boxHtmlItems: string[]) => {
+        const boxColor   = boxIsPros ? 'from-green-50 to-emerald-50 border-green-300' : 'from-red-50 to-rose-50 border-red-300';
+        const iconColor  = boxIsPros ? 'text-green-600' : 'text-red-600';
         const headerColor = boxIsPros ? 'bg-green-500' : 'bg-red-500';
-        const icon = boxIsPros
+        const iconPath   = boxIsPros
           ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>'
           : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>';
         const title = boxIsPros ? 'Pros' : 'Cons';
 
-        const body = boxItems.map((text: string) => `<li class="flex items-start gap-3 text-gray-700 text-[15px] leading-relaxed">
-          <svg class="w-5 h-5 ${iconColor} flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">${icon}</svg>
-          <span>${text}</span>
+        const body = boxHtmlItems.map(html => `<li class="flex items-start gap-3 text-gray-700 text-[15px] leading-relaxed">
+          <svg class="w-5 h-5 ${iconColor} flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">${iconPath}</svg>
+          <span>${html}</span>
         </li>`).join('');
 
         return `<div class="${boxIsPros ? 'pros-box' : 'cons-box'} p-6 rounded-2xl bg-gradient-to-br ${boxColor} border-2">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-8 h-8 rounded-lg ${headerColor} flex items-center justify-center flex-shrink-0 shadow-sm">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">${icon}</svg>
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">${iconPath}</svg>
             </div>
             <h3 class="text-lg font-bold ${boxIsPros ? 'text-green-800' : 'text-red-800'}">${title}</h3>
           </div>
@@ -166,57 +193,59 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
         </div>`;
       };
 
-      const skipFirst = firstItemText.match(/^(pros|cons):?$/i);
+      const skipFirst = /^(pros|cons):?$/i.test(firstItemText.trim());
       const startIndex = skipFirst ? 1 : 0;
 
       if (isPros) {
-        // Check if a "Cons:" label appears later in the same list token
-        const consIdx = items.findIndex((text: string, i: number) =>
+        const consIdx = plainItems.findIndex((text: string, i: number) =>
           i >= startIndex && /^(cons|disadvantages|drawbacks):?$/i.test(text.trim())
         );
-
         if (consIdx !== -1) {
           return `<div class="flex flex-col md:flex-row gap-6 my-8">` +
-            buildBox(true, items.slice(startIndex, consIdx)) +
-            buildBox(false, items.slice(consIdx + 1)) +
+            buildBox(true, htmlItems.slice(startIndex, consIdx)) +
+            buildBox(false, htmlItems.slice(consIdx + 1)) +
             `</div>`;
         }
-
-        return buildBox(true, items.slice(startIndex));
+        return buildBox(true, htmlItems.slice(startIndex));
       }
-
-      return buildBox(false, items.slice(startIndex));
+      return buildBox(false, htmlItems.slice(startIndex));
     }
 
-    // Regular list with green checkmarks
-    const body = items.map((text: string) => {
+    // Regular list
+    const body = htmlItems.map((html: string, i: number) => {
+      if (ordered) {
+        return `<li class="flex items-start gap-3 text-gray-600 text-[17px] leading-relaxed">
+          <span class="flex-shrink-0 mt-1 w-6 h-6 rounded-full bg-vegetation-500 text-white text-xs font-black flex items-center justify-center">${i + 1}</span>
+          <span>${html}</span>
+        </li>`;
+      }
       return `<li class="flex items-start gap-3 text-gray-600 text-[17px] leading-relaxed">
         <svg class="w-5 h-5 text-vegetation-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
         </svg>
-        <span>${text}</span>
+        <span>${html}</span>
       </li>`;
     }).join('');
-    
+
     return `<${ordered ? 'ol' : 'ul'} class="my-6 space-y-3">${body}</${ordered ? 'ol' : 'ul'}>`;
   };
 
   renderer.link = ({ href, tokens }: { href: string; tokens: any[] }) => {
-    const text = tokens.map(t => t.text || t.raw).join('');
-    return `<a href="${href}" class="text-vegetation-600 font-medium underline decoration-vegetation-200 underline-offset-2 hover:decoration-vegetation-500 hover:text-vegetation-800 transition-all" ${href?.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${text}</a>`;
+    const text = renderInline(tokens);
+    const isExternal = href?.startsWith('http');
+    return `<a href="${href}" class="text-vegetation-600 font-medium underline decoration-vegetation-200 underline-offset-2 hover:decoration-vegetation-500 hover:text-vegetation-800 transition-all"${isExternal ? ' target="_blank" rel="noopener noreferrer"' : ''}>${text}</a>`;
   };
 
-  renderer.image = ({ href, title, text }: { href: string; title: string | null; text?: string }) =>
+  renderer.image = ({ href, text }: { href: string; title: string | null; text?: string }) =>
     `<figure class="my-10">
       <img src="${href}" alt="${text || ''}" class="w-full rounded-2xl shadow-xl" loading="lazy"/>
-      ${title ? `<figcaption class="text-center text-sm text-gray-400 mt-3 italic">${title}</figcaption>` : ''}
+      ${text ? `<figcaption class="text-center text-sm text-gray-400 mt-3 italic">${text}</figcaption>` : ''}
     </figure>`;
 
-  // ✅ ENHANCED: Beautiful tables
   renderer.table = (token: any) => {
     const header = `<thead class="bg-gradient-to-r from-vegetation-600 to-lime-600 text-white">
       <tr>${token.header.map((cell: any) => {
-        const text = cell.tokens?.map((t: any) => t.text || t.raw).join('') || cell.text || '';
+        const text = renderInline(cell.tokens || [{ type: 'text', text: cell.text || '' }]);
         return `<th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">${text}</th>`;
       }).join('')}</tr>
     </thead>`;
@@ -225,7 +254,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
       ${token.rows.map((row: any, i: number) => `
         <tr class="hover:bg-vegetation-50/50 transition-colors ${i % 2 === 0 ? 'bg-gray-50/50' : ''}">
           ${row.map((cell: any) => {
-            const text = cell.tokens?.map((t: any) => t.text || t.raw).join('') || cell.text || '';
+            const text = renderInline(cell.tokens || [{ type: 'text', text: cell.text || '' }]);
             return `<td class="px-6 py-4 text-sm text-gray-700">${text}</td>`;
           }).join('')}
         </tr>
@@ -235,18 +264,6 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
     return `<div class="my-10 overflow-hidden rounded-2xl border border-gray-200 shadow-lg">
       <table class="min-w-full divide-y divide-gray-200">${header}${body}</table>
     </div>`;
-  };
-
-  renderer.tablecell = (token: any) => {
-    const text = token.tokens?.map((t: any) => t.text || t.raw).join('') || token.text || '';
-    return token.header
-      ? `<th class="px-6 py-4 text-left text-sm font-bold text-white">${text}</th>`
-      : `<td class="px-6 py-4 text-sm text-gray-700">${text}</td>`;
-  };
-
-  renderer.tablerow = (token: any) => {
-    const cells = token.map((cell: any) => cell.text || '').join('');
-    return `<tr class="hover:bg-vegetation-50/50 transition-colors">${cells}</tr>`;
   };
 
   /* ── Generate HTML ── */
