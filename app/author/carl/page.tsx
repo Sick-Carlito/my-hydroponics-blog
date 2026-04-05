@@ -102,24 +102,22 @@ export default async function AuthorPage() {
           {/* How I Research */}
           <div className="bg-gradient-to-br from-vegetation-50 to-lime-50/60 rounded-2xl border border-vegetation-100 p-8">
             <h2 className="text-xl font-black text-gray-900 mb-5">How I Research Every Article</h2>
-            <div className="space-y-4">
+            <ol className="blog-ol">
               {[
                 { step: '01', title: 'I start with the science', desc: 'Peer-reviewed studies from PubMed/PMC, USDA resources, and university extension programs like UMN and NMSU. If a claim can\'t be traced to a credible source, it doesn\'t go in.' },
                 { step: '02', title: 'I cross-check conflicting advice', desc: 'Hydroponics communities are full of contradicting opinions. I read multiple sources and only include points where credible sources broadly agree — or I flag the disagreement clearly.' },
                 { step: '03', title: 'I find what most guides skip', desc: 'I specifically look for the honest caveats, real costs, and common failure points that beginner articles tend to gloss over. That\'s where the real value is.' },
                 { step: '04', title: 'I link to every source', desc: 'Every statistic and factual claim in my articles links back to its source. You should never have to take my word for anything.' },
               ].map(({ step, title, desc }) => (
-                <div key={step} className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-vegetation-500 text-white flex items-center justify-center text-xs font-black">
-                    {step}
-                  </div>
+                <li key={step} className="blog-li">
+                  <span className="blog-number">{step}</span>
                   <div>
                     <p className="font-bold text-gray-900 mb-0.5">{title}</p>
                     <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
 
           {/* Disclaimer */}
