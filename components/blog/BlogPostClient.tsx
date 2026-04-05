@@ -585,18 +585,26 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
             )}
 
             {/* Author */}
-            {post.author && (
-              <div className="mt-14 p-8 rounded-3xl border border-gray-200 bg-white shadow-sm flex items-start gap-5">
-                <div className="w-16 h-16 flex-shrink-0 rounded-2xl bg-gradient-to-br from-vegetation-500 to-lime-400 flex items-center justify-center text-white text-2xl font-black shadow-md">
-                  {post.author.name[0]}
-                </div>
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-vegetation-500 mb-1">Written by</p>
-                  <h3 className="text-xl font-black text-gray-900 mb-2">{post.author.name}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{post.author.bio}</p>
-                </div>
+            <div className="mt-14 p-8 rounded-3xl border border-gray-200 bg-white shadow-sm flex items-start gap-5">
+              <div className="w-16 h-16 flex-shrink-0 rounded-2xl bg-gradient-to-br from-vegetation-500 to-lime-400 flex items-center justify-center text-white text-2xl font-black shadow-md">
+                C
               </div>
-            )}
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-widest text-vegetation-500 mb-1">Written by</p>
+                <Link href="/author/carl" className="text-xl font-black text-gray-900 hover:text-vegetation-600 transition-colors mb-2 block">
+                  Carl — Hydroponics Curator
+                </Link>
+                <p className="text-gray-500 text-sm leading-relaxed mb-3">
+                  {post.author?.bio || 'I research hydroponics so you don\'t have to — going through university studies, extension programs, and grower communities to find what actually works for home growers.'}
+                </p>
+                <p className="text-gray-400 text-xs leading-relaxed border-t border-gray-100 pt-3">
+                  I\'m a content curator and researcher, not a licensed agronomist or commercial grower. Everything published here is sourced from credible third-party research, which is always linked inline. When in doubt, consult your local agricultural extension office.{' '}
+                  <Link href="/author/carl" className="text-vegetation-600 hover:text-vegetation-700 font-medium underline">
+                    Learn more about how I research →
+                  </Link>
+                </p>
+              </div>
+            </div>
 
             {/* Mobile share */}
             <div className="xl:hidden mt-10 p-6 bg-gray-50 rounded-2xl border border-gray-100">
