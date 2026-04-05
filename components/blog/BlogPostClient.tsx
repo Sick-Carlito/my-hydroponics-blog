@@ -170,15 +170,15 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
     if (isPros || /^cons:?$/i.test(firstItemText.trim())) {
       const buildBox = (boxIsPros: boolean, boxHtmlItems: string[]) => {
         const boxColor   = boxIsPros ? 'from-green-50 to-emerald-50 border-green-300' : 'from-red-50 to-rose-50 border-red-300';
-        const iconColor  = boxIsPros ? 'text-green-600' : 'text-red-600';
         const headerColor = boxIsPros ? 'bg-green-500' : 'bg-red-500';
         const iconPath   = boxIsPros
           ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>'
           : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>';
         const title = boxIsPros ? 'Pros' : 'Cons';
 
-        const body = boxHtmlItems.map(html => `<li class="flex items-start gap-3 text-gray-700 text-[15px] leading-relaxed">
-          <svg class="w-5 h-5 ${iconColor} flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">${iconPath}</svg>
+        const iconStroke = boxIsPros ? '#16a34a' : '#dc2626';
+        const body = boxHtmlItems.map(html => `<li style="display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.7;color:#374151;margin-bottom:8px">
+          <svg style="width:20px;height:20px;flex-shrink:0;margin-top:2px" fill="none" stroke="${iconStroke}" viewBox="0 0 24 24">${iconPath}</svg>
           <span>${html}</span>
         </li>`).join('');
 
@@ -214,20 +214,20 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
     // Regular list
     const body = htmlItems.map((html: string, i: number) => {
       if (ordered) {
-        return `<li class="flex items-start gap-3 text-gray-600 text-[17px] leading-relaxed">
-          <span class="flex-shrink-0 mt-1 w-6 h-6 rounded-full bg-vegetation-500 text-white text-xs font-black flex items-center justify-center">${i + 1}</span>
+        return `<li style="display:flex;align-items:flex-start;gap:12px;color:#4b5563;font-size:17px;line-height:1.9;margin-bottom:10px">
+          <span style="flex-shrink:0;margin-top:4px;width:24px;height:24px;border-radius:50%;background:#22c55e;color:#ffffff;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center">${i + 1}</span>
           <span>${html}</span>
         </li>`;
       }
-      return `<li class="flex items-start gap-3 text-gray-600 text-[17px] leading-relaxed">
-        <svg class="w-5 h-5 text-vegetation-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      return `<li style="display:flex;align-items:flex-start;gap:12px;color:#4b5563;font-size:17px;line-height:1.9;margin-bottom:10px">
+        <svg style="width:20px;height:20px;color:#22c55e;flex-shrink:0;margin-top:4px" fill="none" stroke="#22c55e" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
         </svg>
         <span>${html}</span>
       </li>`;
     }).join('');
 
-    return `<${ordered ? 'ol' : 'ul'} class="my-6 space-y-3">${body}</${ordered ? 'ol' : 'ul'}>`;
+    return `<${ordered ? 'ol' : 'ul'} style="margin:1.5rem 0;padding:0;list-style:none">${body}</${ordered ? 'ol' : 'ul'}>`;
   };
 
   renderer.link = ({ href, tokens }: { href: string; tokens: any[] }) => {
@@ -243,26 +243,26 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
     </figure>`;
 
   renderer.table = (token: any) => {
-    const header = `<thead class="bg-gradient-to-r from-vegetation-600 to-lime-600 text-white">
-      <tr>${token.header.map((cell: any) => {
+    const header = `<thead>
+      <tr style="background:linear-gradient(to right,#16a34a,#65a30d)">${token.header.map((cell: any) => {
         const text = renderInline(cell.tokens || [{ type: 'text', text: cell.text || '' }]);
-        return `<th class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">${text}</th>`;
+        return `<th style="color:#ffffff;padding:14px 20px;text-align:left;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap">${text}</th>`;
       }).join('')}</tr>
     </thead>`;
 
-    const body = `<tbody class="bg-white divide-y divide-gray-200">
+    const body = `<tbody>
       ${token.rows.map((row: any, i: number) => `
-        <tr class="hover:bg-vegetation-50/50 transition-colors ${i % 2 === 0 ? 'bg-gray-50/50' : ''}">
+        <tr style="background:${i % 2 === 0 ? '#f0fdf4' : '#ffffff'};border-bottom:1px solid #e5e7eb">
           ${row.map((cell: any) => {
             const text = renderInline(cell.tokens || [{ type: 'text', text: cell.text || '' }]);
-            return `<td class="px-6 py-4 text-sm text-gray-700">${text}</td>`;
+            return `<td style="padding:12px 20px;font-size:14px;color:#374151;vertical-align:top">${text}</td>`;
           }).join('')}
         </tr>
       `).join('')}
     </tbody>`;
 
-    return `<div class="my-10 overflow-hidden rounded-2xl border border-gray-200 shadow-lg">
-      <table class="min-w-full divide-y divide-gray-200">${header}${body}</table>
+    return `<div style="margin:2.5rem 0;overflow:hidden;border-radius:16px;border:1px solid #e5e7eb;box-shadow:0 4px 16px rgba(0,0,0,0.08);overflow-x:auto">
+      <table style="min-width:100%;border-collapse:collapse">${header}${body}</table>
     </div>`;
   };
 
