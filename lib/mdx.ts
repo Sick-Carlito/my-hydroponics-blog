@@ -40,8 +40,8 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
         category: data.category || 'Uncategorized',
         tags: data.tags || [],
         author: data.author || {
-          name: 'HydroGrow Team',
-          bio: 'Passionate about hydroponic gardening',
+          name: 'Carl',
+          bio: 'I research hydroponics so you don\'t have to — going through university studies, extension programs, and grower communities to find what actually works for home growers.',
         },
         featured: data.featured || false,
         image: data.image,
@@ -88,8 +88,8 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       category: data.category || 'Uncategorized',
       tags: data.tags || [],
       author: data.author || {
-        name: 'HydroGrow Team',
-        bio: 'Passionate about hydroponic gardening',
+        name: 'Carl',
+        bio: 'I research hydroponics so you don\'t have to — going through university studies, extension programs, and grower communities to find what actually works for home growers.',
       },
       featured: data.featured || false,
       image: data.image,
