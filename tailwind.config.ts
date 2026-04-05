@@ -148,38 +148,6 @@ const config: Config = {
       },
     },
   },
-  safelist: [
-    // List item indicators
-    'flex', 'items-start', 'gap-3', 'flex-shrink-0', 'mt-1', 'mt-0.5',
-    'w-5', 'h-5', 'w-6', 'h-6', 'w-8', 'h-8', 'w-10', 'h-10',
-    'rounded-full', 'rounded-lg', 'rounded-2xl',
-    // Vegetation colors used in renderer
-    'text-vegetation-500', 'text-vegetation-600', 'text-vegetation-700', 'text-vegetation-800',
-    'bg-vegetation-500', 'bg-vegetation-600',
-    'from-vegetation-50', 'from-vegetation-500', 'from-vegetation-600',
-    'to-lime-400', 'to-lime-600',
-    'bg-vegetation-50', 'border-vegetation-100', 'border-vegetation-300', 'border-vegetation-500',
-    // Pros box
-    'from-green-50', 'to-emerald-50', 'border-green-300',
-    'text-green-600', 'text-green-800', 'bg-green-500', 'pros-box',
-    // Cons box
-    'from-red-50', 'to-rose-50', 'border-red-300',
-    'text-red-600', 'text-red-800', 'bg-red-500', 'cons-box',
-    // Box layout
-    'bg-gradient-to-br', 'bg-gradient-to-r', 'border-2',
-    'space-y-2.5', 'space-y-3',
-    // Table
-    'from-vegetation-600', 'divide-y', 'divide-gray-200',
-    'bg-gray-50', 'hover:bg-vegetation-50',
-    // Text sizes
-    'text-[15px]', 'text-[17px]',
-    'text-xs', 'font-black', 'font-bold', 'font-semibold',
-    // Blockquote boxes
-    'from-blue-50', 'to-cyan-50', 'border-blue-500', 'text-blue-900',
-    'from-amber-50', 'to-yellow-50', 'border-amber-500', 'text-amber-900',
-    'from-green-50', 'to-emerald-50', 'border-green-500', 'text-green-900',
-    'from-cyan-50', 'to-teal-50', 'border-cyan-500', 'text-cyan-900',
-  ],
   plugins: [
     require('@tailwindcss/typography'),
   ],
