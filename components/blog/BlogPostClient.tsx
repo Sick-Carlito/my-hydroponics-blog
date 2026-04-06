@@ -472,7 +472,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full object-cover max-h-[520px]"
+                className="w-full"
                 loading="eager"
               />
             </figure>
