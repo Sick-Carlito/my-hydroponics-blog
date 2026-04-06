@@ -468,11 +468,11 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
         {/* Hero image */}
         {post.image && (
           <div className="max-w-5xl mx-auto px-5 sm:px-8 pb-14">
-            <figure className="rounded-3xl overflow-hidden shadow-2xl aspect-square sm:aspect-[4/3]">
+            <figure className="rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-full object-contain bg-white"
+                className="w-full h-auto"
                 loading="eager"
               />
             </figure>
