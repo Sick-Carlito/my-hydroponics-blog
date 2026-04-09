@@ -384,6 +384,15 @@ html {
   text-underline-offset: 3px;
 }
 
+.article-content figcaption {
+  font-size: 13px;
+  color: #64748b;
+  text-align: center;
+  font-style: italic;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
 @keyframes bounce-slow {
   0%, 100% {
     transform: translateY(0);
