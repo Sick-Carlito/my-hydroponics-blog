@@ -252,7 +252,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
       `).join('')}
     </tbody>`;
 
-    return `<div style="margin:2.5rem 0;overflow:hidden;border-radius:16px;border:1px solid #e5e7eb;box-shadow:0 4px 16px rgba(0,0,0,0.08);overflow-x:auto">
+    return `<div style="margin:2.5rem 0 0.5rem 0;overflow:hidden;border-radius:16px;border:1px solid #e5e7eb;box-shadow:0 4px 16px rgba(0,0,0,0.08);overflow-x:auto">
       <table style="min-width:100%;border-collapse:collapse">${header}${body}</table>
     </div>`;
   };
