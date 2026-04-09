@@ -105,7 +105,6 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
       return `<figure class="my-10">
         <img src="${img.href}" alt="${img.text || ''}" class="w-full rounded-2xl shadow-xl" loading="lazy"/>
         ${img.title ? `<figcaption class="text-center text-sm text-gray-400 mt-3 italic">${img.title}</figcaption>` : ''}
-        ${img.text ? `<p class="text-center text-xs text-gray-400 mt-2 italic">${img.text}</p>` : ''}
       </figure>`;
     }
     return `<p class="text-gray-600 text-[17px] leading-[1.9] mb-6">${renderInline(tokens)}</p>`;
