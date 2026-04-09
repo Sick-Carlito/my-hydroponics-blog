@@ -1,11 +1,13 @@
 'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // ============================================
 // FILE: components/blog/BlogPostClient.tsx
-// ENHANCED with: Custom FAQs, Pros/Cons boxes, 
+// ENHANCED with: Custom FAQs, Pros/Cons boxes,
 // Better markdown, Info boxes, Green bullets
 // ============================================
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { formatDate } from '@/lib/utils';
 import { BlogPost } from '@/types';
@@ -261,6 +263,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
   const html = React.useMemo(() => {
     marked.use({ renderer, breaks: true, gfm: true });
     return marked.parse(post.content, { async: false }) as string;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post.content]);
 
   /* ── Pair pros/cons boxes side by side ── */
@@ -469,11 +472,13 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
         {post.image && (
           <div className="max-w-5xl mx-auto px-5 sm:px-8 pb-14">
             <figure className="rounded-3xl overflow-hidden shadow-2xl">
-              <img
+              <Image
                 src={post.image}
                 alt={post.title}
+                width={1200}
+                height={630}
                 className="w-full h-auto"
-                loading="eager"
+                priority
               />
             </figure>
           </div>
@@ -638,7 +643,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
                   {post.author?.bio || 'I research hydroponics so you don\'t have to — going through university studies, extension programs, and grower communities to find what actually works for home growers.'}
                 </p>
                 <p className="text-gray-400 text-xs leading-relaxed border-t border-gray-100 pt-3">
-                  I\'m a content curator and researcher, not a licensed agronomist or commercial grower. Everything published here is sourced from credible third-party research, which is always linked inline. When in doubt, consult your local agricultural extension office.{' '}
+                  I&apos;m a content curator and researcher, not a licensed agronomist or commercial grower. Everything published here is sourced from credible third-party research, which is always linked inline. When in doubt, consult your local agricultural extension office.{' '}
                   <Link href="/author/carl" className="text-vegetation-600 hover:text-vegetation-700 font-medium underline">
                     Learn more about how I research →
                   </Link>
