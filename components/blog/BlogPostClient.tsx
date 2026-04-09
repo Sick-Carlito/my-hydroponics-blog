@@ -577,7 +577,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
               <ul className="space-y-3">
                 {takeaways.map((point, i) => (
                   <li key={i} className="flex items-start gap-3 text-gray-700 text-sm leading-relaxed">
-                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-vegetation-500 text-white flex items-center justify-center text-[11px] font-black">{i + 1}</span>
+                    <span style={{display:'inline-flex',alignItems:'center',justifyContent:'center',flexShrink:0,width:'1.25rem',height:'1.25rem',borderRadius:'9999px',backgroundColor:'#16a34a',color:'#ffffff',fontSize:'11px',fontWeight:900,marginTop:'0.125rem'}}>{i + 1}</span>
                     {point}
                   </li>
                 ))}
