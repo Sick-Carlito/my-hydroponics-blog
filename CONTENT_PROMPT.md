@@ -53,6 +53,11 @@ faqs:
 - **Second paragraph:** Carl's curator framing — why you researched this, what you found that most guides miss.
 - Do NOT start with a question. Do NOT start with "Are you wondering...". Get to the point.
 
+### Featured Snippet Paragraph — REQUIRED under every H2 and H3
+- Every heading must be followed immediately by a 2–3 sentence direct answer to what that heading implies.
+- This paragraph should be able to stand alone as a Google featured snippet.
+- Write the short answer first, then expand with detail below it.
+
 ### Definitions / What Is It (200–300 words)
 - Clear definition of the core concept in plain English
 - Include a credible source citation for the definition where possible (USDA, university)
@@ -89,22 +94,38 @@ faqs:
 - Answer the "is it worth it" question directly
 - Recommend the simplest starting point
 
+### Images — REQUIRED placeholders in every post
+- Place an image placeholder after every major section (after each H2 block)
+- Format: `![Descriptive alt text explaining exactly what this image should show](/images/posts/[post-slug]/image-name.jpg)`
+- Alt text must describe the image content specifically — not just "hydroponic tower" but "Diagram comparing NFT tower flow vs aeroponic misting system with labeled parts"
+- The image placeholder stays in the post until a real image replaces the path
+- Minimum 3 image placeholders per pillar post, 2 per supporting post
+
+### Links — Inline and Contextual (REQUIRED)
+- Every source link must be anchored to the specific claim or data point it supports
+- The hyperlink text should be the number, finding, or recommendation — not the source name in isolation
+- Good: "produces [13.8 times more yield per square meter](link) than horizontal systems"
+- Bad: "A [Lancaster University study](link) found that vertical systems produce 13.8x more yield"
+- All links are inline. No sources list at the bottom. If it's linked in the body, it doesn't need to be listed again.
+
 ### Internal Links (REQUIRED)
-- Link to **at least 2 other posts** on the site
+- Link to at least 2 other posts on the site
 - Pillar posts: link to supporting posts
 - Supporting posts: link back to the pillar AND one other supporting post
-- Use natural anchor text, not "click here"
+- Use natural anchor text attached to the concept being explained, not "click here" or "see our guide"
 
-### CTA — Newsletter (at the end, before sources)
+### CTA — Newsletter (at the end of the article body)
 ```
 ---
-*Want one curated hydroponic tip every week? [Join 1,000+ growers getting the Hydroponics Central newsletter](/blog#newsletter) — free, no spam.*
+Join 1,000+ growers getting one curated hydroponic tip every week — [subscribe to the Hydroponics Central newsletter](/blog#newsletter). Free, no spam.
 ```
+No asterisks. Plain text with one inline link.
 
-### Sources Section
-- List every source with a working hyperlink to the **specific page**, not the homepage
-- Format: `[Author/Org — Article Title](url)`
-- Minimum 4 sources for pillar posts, 3 for supporting posts
+### Formatting Rules
+- No asterisks for italic (*text*) — avoid italic formatting entirely
+- Bold (**text**) is allowed for key terms, numbers, and product names
+- Bullet lists use - not *
+- No sources list at the bottom — all citations live inline as contextual links
 
 ---
 
