@@ -398,18 +398,18 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
 
       {/* Hero */}
       <header className="relative bg-gradient-to-b from-vegetation-50 via-white to-white overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-vegetation-100/50 blur-3xl pointer-events-none" />
-        <div className="absolute top-32 -left-16 w-56 h-56 rounded-full bg-lime-100/60 blur-2xl pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-60 h-60 sm:w-80 sm:h-80 rounded-full bg-vegetation-100/50 blur-3xl pointer-events-none" />
+        <div className="absolute top-20 sm:top-32 -left-12 sm:-left-16 w-40 h-40 sm:w-56 sm:h-56 rounded-full bg-lime-100/60 blur-2xl pointer-events-none" />
 
-        <div className="relative max-w-5xl mx-auto px-5 sm:px-8 pt-32 pb-14">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 md:pt-32 pb-8 sm:pb-10 md:pb-14">
 
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="flex items-center flex-wrap gap-2 text-sm text-gray-400 mb-8">
-            <Link href="/" className="hover:text-vegetation-600 transition-colors">Home</Link>
-            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
-            <Link href="/blog" className="hover:text-vegetation-600 transition-colors">Blog</Link>
-            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
-            <span className="text-gray-600 truncate max-w-[240px]">{post.title}</span>
+          <nav aria-label="Breadcrumb" className="flex items-center flex-wrap gap-1 sm:gap-2 text-xs sm:text-sm text-gray-400 mb-6 sm:mb-8">
+            <Link href="/" className="hover:text-vegetation-600 transition-colors truncate">Home</Link>
+            <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+            <Link href="/blog" className="hover:text-vegetation-600 transition-colors truncate">Blog</Link>
+            <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+            <span className="text-gray-600 truncate max-w-[150px] sm:max-w-[240px]">{post.title}</span>
           </nav>
 
           {/* Category */}
@@ -419,38 +419,38 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
           </span>
 
           {/* Title */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-950 leading-[1.06] tracking-tight mb-6 max-w-4xl">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-950 leading-[1.06] tracking-tight mb-4 sm:mb-6 max-w-4xl">
             {post.title}
           </h1>
 
           {/* Excerpt */}
-          <p className="text-xl text-gray-500 leading-relaxed mb-10 max-w-3xl font-light">
+          <p className="text-base sm:text-lg md:text-xl text-gray-500 leading-relaxed mb-6 sm:mb-10 max-w-3xl font-light">
             {post.excerpt}
           </p>
 
           {/* Meta */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pb-10 border-b border-gray-200">
-            <Link href="/author/carl" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-vegetation-500 to-lime-400 flex items-center justify-center text-white font-black shadow group-hover:shadow-md transition-shadow">
+          <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-6 gap-y-2 sm:gap-y-3 pb-6 sm:pb-10 border-b border-gray-200">
+            <Link href="/author/carl" className="flex items-center gap-2 sm:gap-3 group">
+              <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-vegetation-500 to-lime-400 flex items-center justify-center text-white font-black shadow group-hover:shadow-md transition-shadow text-xs sm:text-sm">
                 C
               </div>
               <div>
-                <p className="font-semibold text-gray-800 text-sm leading-none group-hover:text-vegetation-600 transition-colors">Carl</p>
-                <p className="text-gray-400 text-xs mt-0.5">Hydroponics Curator</p>
+                <p className="font-semibold text-gray-800 text-xs sm:text-sm leading-none group-hover:text-vegetation-600 transition-colors">Carl</p>
+                <p className="text-gray-400 text-[10px] sm:text-xs mt-0.5">Hydroponics Curator</p>
               </div>
             </Link>
             <div className="h-4 w-px bg-gray-200 hidden sm:block" />
-            <time dateTime={post.date} className="flex items-center gap-1.5 text-sm text-gray-500">
-              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <time dateTime={post.date} className="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-gray-500">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
               {formatDate(post.date)}
             </time>
-            <div className="flex items-center gap-1.5 text-sm text-gray-500">
-              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div className="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-gray-500">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               {readTime} min read
               </div>
             <time></time>
-            <div className="flex items-center gap-1.5 text-sm text-gray-500">
-              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <div className="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm text-gray-500">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
               {wordCount.toLocaleString()} words
             </div>
           </div>
@@ -469,8 +469,8 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
 
         {/* Hero image */}
         {post.image && (
-          <div className="max-w-5xl mx-auto px-5 sm:px-8 pb-14">
-            <figure className="rounded-3xl overflow-hidden shadow-2xl">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-10 md:pb-14">
+            <figure className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg sm:shadow-2xl">
               <Image
                 src={post.image}
                 alt={post.title}
@@ -485,11 +485,11 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
       </header>
 
       {/* Body */}
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-14">
-        <div className="flex gap-14 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:gap-14 items-start">
 
           {/* Sidebar */}
-          <aside className="hidden xl:flex flex-col gap-5 w-[240px] flex-shrink-0 sticky top-24">
+          <aside className="hidden lg:flex flex-col gap-5 w-56 flex-shrink-0 sticky top-24">
 
             {/* TOC */}
             {toc.length > 0 && (
@@ -560,24 +560,24 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
           </aside>
 
           {/* Main content */}
-          <article className="flex-1 max-w-3xl">
+          <article className="w-full lg:flex-1 lg:max-w-3xl">
             <div ref={contentRef} dangerouslySetInnerHTML={{ __html: html }} className="prose-custom" />
 
             {/* Key takeaways */}
-            <div className="mt-14 p-8 rounded-3xl bg-gradient-to-br from-vegetation-50 to-lime-50/60 border-2 border-vegetation-200">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-2xl bg-vegetation-500 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            <div className="mt-8 sm:mt-10 md:mt-14 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-vegetation-50 to-lime-50/60 border-2 border-vegetation-200">
+              <div className="flex items-start sm:items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg sm:rounded-2xl bg-vegetation-500 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-4 sm:w-5 h-4 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-black text-gray-900">Key Takeaways</h2>
-                  <p className="text-gray-500 text-sm">Quick reference summary</p>
+                  <h2 className="text-xl sm:text-2xl font-black text-gray-900">Key Takeaways</h2>
+                  <p className="text-gray-500 text-xs sm:text-sm">Quick reference summary</p>
                 </div>
               </div>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {takeaways.map((point, i) => (
-                  <li key={i} className="flex items-start gap-3 text-gray-700 text-sm leading-relaxed">
-                    <span style={{display:'inline-flex',alignItems:'center',justifyContent:'center',flexShrink:0,width:'1.25rem',height:'1.25rem',borderRadius:'9999px',backgroundColor:'#16a34a',color:'#ffffff',fontSize:'11px',fontWeight:900,marginTop:'0.125rem'}}>{i + 1}</span>
+                  <li key={i} className="flex items-start gap-2 sm:gap-3 text-gray-700 text-xs sm:text-sm leading-relaxed">
+                    <span style={{display:'inline-flex',alignItems:'center',justifyContent:'center',flexShrink:0,width:'1.25rem',height:'1.25rem',borderRadius:'9999px',backgroundColor:'#16a34a',color:'#ffffff',fontSize:'10px',fontWeight:900,marginTop:'0.125rem'}}>{i + 1}</span>
                     {point}
                   </li>
                 ))}
@@ -586,40 +586,40 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
 
             {/* FAQ - Uses custom FAQs if available */}
             {faqs.length > 0 && (
-              <section className="mt-14" aria-label="Frequently asked questions">
-                <div className="flex items-center gap-3 mb-7">
-                  <div className="w-10 h-10 rounded-2xl bg-amber-100 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <section className="mt-8 sm:mt-10 md:mt-14" aria-label="Frequently asked questions">
+                <div className="flex items-start sm:items-center gap-2 sm:gap-3 mb-5 sm:mb-7">
+                  <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg sm:rounded-2xl bg-amber-100 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 sm:w-5 h-4 sm:h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-black text-gray-900">Frequently Asked Questions</h2>
-                    <p className="text-gray-400 text-sm">Common questions from our readers</p>
+                    <h2 className="text-xl sm:text-2xl font-black text-gray-900">Frequently Asked Questions</h2>
+                    <p className="text-gray-400 text-xs sm:text-sm">Common questions from our readers</p>
                   </div>
                 </div>
 
-                <div className="space-y-3" itemScope itemType="https://schema.org/FAQPage">
+                <div className="space-y-2 sm:space-y-3" itemScope itemType="https://schema.org/FAQPage">
                   {faqs.map((faq: FAQ, i: number) => (
                     <div
                       key={i}
                       itemScope
                       itemProp="mainEntity"
                       itemType="https://schema.org/Question"
-                      className={`rounded-2xl border overflow-hidden transition-all duration-200 ${openFaq === i ? 'border-vegetation-300 shadow-md shadow-vegetation-100' : 'border-gray-200 hover:border-gray-300'}`}
+                      className={`rounded-lg sm:rounded-2xl border overflow-hidden transition-all duration-200 ${openFaq === i ? 'border-vegetation-300 shadow-md shadow-vegetation-100' : 'border-gray-200 hover:border-gray-300'}`}
                     >
                       <button
                         onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                        className="w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-gray-50/50 transition-colors"
+                        className="w-full flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 text-left bg-white hover:bg-gray-50/50 transition-colors gap-3"
                         aria-expanded={openFaq === i}
                       >
-                        <span itemProp="name" className="font-semibold text-gray-800 pr-6 leading-snug">{faq.q}</span>
-                        <span className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 ${openFaq === i ? 'bg-vegetation-500 text-white rotate-45' : 'bg-gray-100 text-gray-400'}`}>
-                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4"/></svg>
+                        <span itemProp="name" className="font-semibold text-gray-800 pr-3 leading-snug text-sm sm:text-base">{faq.q}</span>
+                        <span className={`flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center transition-all duration-200 ${openFaq === i ? 'bg-vegetation-500 text-white rotate-45' : 'bg-gray-100 text-gray-400'}`}>
+                          <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4"/></svg>
                         </span>
                       </button>
                       {openFaq === i && (
-                        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer" className="px-6 pb-6 bg-white">
-                          <div className="h-px bg-gray-100 mb-4" />
-                          <p itemProp="text" className="text-gray-600 leading-relaxed">{faq.a}</p>
+                        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer" className="px-4 sm:px-6 pb-4 sm:pb-6 bg-white">
+                          <div className="h-px bg-gray-100 mb-3 sm:mb-4" />
+                          <p itemProp="text" className="text-gray-600 leading-relaxed text-sm sm:text-base">{faq.a}</p>
                         </div>
                       )}
                     </div>
@@ -629,19 +629,19 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
             )}
 
             {/* Author */}
-            <div className="mt-14 p-8 rounded-3xl border border-gray-200 bg-white shadow-sm flex items-start gap-5">
-              <div className="w-16 h-16 flex-shrink-0 rounded-2xl bg-gradient-to-br from-vegetation-500 to-lime-400 flex items-center justify-center text-white text-2xl font-black shadow-md">
+            <div className="mt-8 sm:mt-10 md:mt-14 p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-200 bg-white shadow-sm flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+              <div className="w-12 sm:w-16 h-12 sm:h-16 flex-shrink-0 rounded-lg sm:rounded-2xl bg-gradient-to-br from-vegetation-500 to-lime-400 flex items-center justify-center text-white text-lg sm:text-2xl font-black shadow-md">
                 C
               </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-vegetation-500 mb-1">Written by</p>
-                <Link href="/author/carl" className="text-xl font-black text-gray-900 hover:text-vegetation-600 transition-colors mb-2 block">
+              <div className="flex-1">
+                <p className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-vegetation-500 mb-1">Written by</p>
+                <Link href="/author/carl" className="text-lg sm:text-xl font-black text-gray-900 hover:text-vegetation-600 transition-colors mb-2 block">
                   Carl — Hydroponics Curator
                 </Link>
-                <p className="text-gray-500 text-sm leading-relaxed mb-3">
+                <p className="text-gray-500 text-xs sm:text-sm leading-relaxed mb-3">
                   {post.author?.bio || 'I research hydroponics so you don\'t have to — going through university studies, extension programs, and grower communities to find what actually works for home growers.'}
                 </p>
-                <p className="text-gray-400 text-xs leading-relaxed border-t border-gray-100 pt-3">
+                <p className="text-gray-400 text-[11px] sm:text-xs leading-relaxed border-t border-gray-100 pt-2 sm:pt-3">
                   I&apos;m a content curator and researcher, not a licensed agronomist or commercial grower. Everything published here is sourced from credible third-party research, which is always linked inline. When in doubt, consult your local agricultural extension office.{' '}
                   <Link href="/author/carl" className="text-vegetation-600 hover:text-vegetation-700 font-medium underline">
                     Learn more about how I research →
@@ -675,21 +675,21 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
       </div>
 
       {/* Newsletter */}
-      <section className="relative bg-gradient-to-br from-vegetation-700 via-vegetation-600 to-lime-600 py-20 px-5 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-vegetation-700 via-vegetation-600 to-lime-600 py-12 sm:py-16 md:py-20 px-4 sm:px-5 md:px-6 overflow-hidden">
         <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
         <div className="relative max-w-xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 bg-white/20 text-white text-[11px] font-black uppercase tracking-widest rounded-full mb-6">Free Newsletter</span>
-          <h2 className="text-4xl font-black text-white mb-4 leading-tight">Grow Smarter Every Week</h2>
-          <p className="text-vegetation-100 text-lg mb-8 leading-relaxed">
+          <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-white/20 text-white text-[10px] sm:text-[11px] font-black uppercase tracking-widest rounded-full mb-4 sm:mb-6">Free Newsletter</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-2 sm:mb-4 leading-tight">Grow Smarter Every Week</h2>
+          <p className="text-sm sm:text-base md:text-lg text-vegetation-100 mb-6 sm:mb-8 leading-relaxed px-2">
             Join 1,000+ growers getting expert tips, system guides, and troubleshooting help.
           </p>
-          <form className="flex flex-col sm:flex-row gap-3" onSubmit={e => e.preventDefault()}>
-            <input type="email" placeholder="your@email.com" className="flex-1 px-6 py-4 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-white/30 shadow-lg" required />
-            <button type="submit" className="px-8 py-4 bg-white text-vegetation-700 font-black rounded-2xl hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl hover:scale-105">
+          <form className="flex flex-col sm:flex-row gap-2 sm:gap-3 px-2" onSubmit={e => e.preventDefault()}>
+            <input type="email" placeholder="your@email.com" className="flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-lg sm:rounded-2xl text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:ring-4 focus:ring-white/30 shadow-lg" required />
+            <button type="submit" className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-vegetation-700 font-black rounded-lg sm:rounded-2xl hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl hover:scale-105 whitespace-nowrap text-sm sm:text-base">
               Subscribe Free
             </button>
           </form>
-          <p className="text-vegetation-200 text-xs mt-4">No spam. Unsubscribe anytime.</p>
+          <p className="text-vegetation-200 text-[11px] sm:text-xs mt-3 sm:mt-4">No spam. Unsubscribe anytime.</p>
         </div>
       </section>
 
