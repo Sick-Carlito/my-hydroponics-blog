@@ -207,19 +207,25 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
     if (isPros || /^cons:?$/i.test(firstItemText.trim())) {
       const buildBox = (boxIsPros: boolean, boxHtmlItems: string[]) => {
         const title = boxIsPros ? "Pros" : "Cons";
-        const marker = boxIsPros
-          ? `<span class="blog-box-check">&#10003;</span>`
-          : `<span class="blog-box-cross">&#10005;</span>`;
+
+        const itemIcon = boxIsPros
+          ? `<svg class="blog-box-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#dcfce7"/><path stroke="#16a34a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.5 8l2.5 2.5 4.5-4.5"/></svg>`
+          : `<svg class="blog-box-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#fee2e2"/><path stroke="#dc2626" stroke-linecap="round" stroke-width="1.8" d="M5 5l6 6M11 5l-6 6"/></svg>`;
+
+        const headerIcon = boxIsPros
+          ? `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8.5l3 3L13 4"/></svg>`
+          : `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 14 14"><path stroke="#fff" stroke-linecap="round" stroke-width="2.2" d="M2 2l10 10M12 2L2 12"/></svg>`;
+
         const body = boxHtmlItems
           .map(
             (html) =>
-              `<li class="blog-box-li">${marker}<span>${html}</span></li>`,
+              `<li class="blog-box-li">${itemIcon}<span>${html}</span></li>`,
           )
           .join("");
 
         return `<div class="${boxIsPros ? "blog-pros-box" : "blog-cons-box"}">
           <div class="blog-box-header">
-            <div class="${boxIsPros ? "blog-box-icon-pros" : "blog-box-icon-cons"}">${boxIsPros ? "&#10003;" : "&#10005;"}</div>
+            <div class="${boxIsPros ? "blog-box-icon-pros" : "blog-box-icon-cons"}">${headerIcon}</div>
             <h3 class="${boxIsPros ? "blog-box-title-pros" : "blog-box-title-cons"}">${title}</h3>
           </div>
           <ul class="blog-box-ul">${body}</ul>
@@ -447,26 +453,22 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
         .blog-li{display:flex;align-items:flex-start;gap:12px;color:#374151;font-size:17px;line-height:1.85;margin-bottom:12px}
         .blog-bullet{flex-shrink:0;width:10px;height:10px;border-radius:50%;background-color:#16a34a;margin-top:8px;display:block}
         .blog-number{flex-shrink:0;min-width:28px;height:28px;border-radius:50%;background-color:#16a34a;color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
-        .blog-pros-cons-wrapper{display:flex;flex-wrap:wrap;gap:24px;margin:2rem 0}
-        .blog-pros-box{flex:1;min-width:260px;padding:24px;border-radius:16px;background-color:#f0fdf4;border:2px solid #86efac}
-        .blog-cons-box{flex:1;min-width:260px;padding:24px;border-radius:16px;background-color:#fff5f5;border:2px solid #fca5a5}
-        .blog-box-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-        .blog-box-icon-pros{width:32px;height:32px;border-radius:8px;background-color:#16a34a;color:#fff;font-size:18px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .blog-box-icon-cons{width:32px;height:32px;border-radius:8px;background-color:#dc2626;color:#fff;font-size:18px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .blog-box-title-pros{font-size:18px;font-weight:700;color:#14532d;margin:0}
-        .blog-box-title-cons{font-size:18px;font-weight:700;color:#7f1d1d;margin:0}
-        .blog-box-ul{margin:0;padding:0;list-style:none}
-        .blog-box-li{display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.65;color:#374151;margin-bottom:10px;hyphens:none;word-break:normal}
-        .blog-box-check{flex-shrink:0;color:#16a34a;font-size:17px;font-weight:900;margin-top:2px;line-height:1}
-        .blog-box-cross{flex-shrink:0;color:#dc2626;font-size:17px;font-weight:900;margin-top:2px;line-height:1}
-        @media(max-width:640px){
-          .blog-pros-cons-wrapper{flex-direction:column;gap:14px;margin:1.5rem 0}
-          .blog-pros-box,.blog-cons-box{min-width:0;width:100%;padding:18px 16px;border-radius:12px}
-          .blog-box-header{margin-bottom:12px;gap:10px}
-          .blog-box-icon-pros,.blog-box-icon-cons{width:28px;height:28px;font-size:16px}
-          .blog-box-title-pros,.blog-box-title-cons{font-size:16px}
-          .blog-box-li{font-size:14px;line-height:1.6;margin-bottom:8px;gap:8px}
-          .blog-box-check,.blog-box-cross{font-size:15px;margin-top:2px}
+        .blog-pros-cons-wrapper{display:flex;flex-direction:column;gap:14px;margin:2rem 0}
+        .blog-pros-box{flex:1;padding:18px 16px;border-radius:14px;background:#f0fdf4;border:2px solid #86efac}
+        .blog-cons-box{flex:1;padding:18px 16px;border-radius:14px;background:#fff5f5;border:2px solid #fca5a5}
+        .blog-box-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(0,0,0,0.07)}
+        .blog-box-icon-pros{width:30px;height:30px;border-radius:7px;background:#16a34a;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .blog-box-icon-cons{width:30px;height:30px;border-radius:7px;background:#dc2626;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .blog-box-title-pros{font-size:16px;font-weight:700;color:#14532d;margin:0}
+        .blog-box-title-cons{font-size:16px;font-weight:700;color:#7f1d1d;margin:0}
+        .blog-box-ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+        .blog-box-li{display:flex;align-items:flex-start;gap:8px;font-size:14.5px;line-height:1.55;color:#374151;hyphens:none;word-break:normal}
+        .blog-box-item-icon{flex-shrink:0;margin-top:2px}
+        @media(min-width:600px){
+          .blog-pros-cons-wrapper{flex-direction:row;gap:20px}
+          .blog-pros-box,.blog-cons-box{padding:22px 20px}
+          .blog-box-title-pros,.blog-box-title-cons{font-size:17px}
+          .blog-box-li{font-size:15px}
         }
       `}</style>
       {/* Progress bar */}
