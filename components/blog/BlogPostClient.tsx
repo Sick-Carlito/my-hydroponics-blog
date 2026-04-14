@@ -412,11 +412,10 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
 
   const categoryStyle: Record<string, string> = {
     "beginner-guides": "bg-blue-50 text-blue-700 border-blue-200",
-    systems: "bg-purple-50 text-purple-700 border-purple-200",
-    nutrients: "bg-vegetation-50 text-vegetation-700 border-vegetation-200",
-    "plant-care": "bg-orange-50 text-orange-700 border-orange-200",
+    "systems-and-setups": "bg-purple-50 text-purple-700 border-purple-200",
+    "crops-and-growing": "bg-orange-50 text-orange-700 border-orange-200",
     diy: "bg-teal-50 text-teal-700 border-teal-200",
-    advanced: "bg-rose-50 text-rose-700 border-rose-200",
+    troubleshooting: "bg-amber-50 text-amber-700 border-amber-200",
   };
 
   // ✅ FIX: Use custom FAQs from post data, or default fallback

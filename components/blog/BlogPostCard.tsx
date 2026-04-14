@@ -19,11 +19,10 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
   const getBadgeVariant = (category: string) => {
     const variants: Record<string, any> = {
       'beginner-guides': 'blue',
-      'systems': 'purple',
-      'nutrients': 'green',
-      'plant-care': 'orange',
+      'systems-and-setups': 'purple',
+      'crops-and-growing': 'orange',
       'diy': 'cyan',
-      'advanced': 'pink',
+      'troubleshooting': 'ocean',
     };
     return variants[category] || 'ocean';
   };

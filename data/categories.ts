@@ -9,35 +9,26 @@ export const categories: Category[] = [
   {
     slug: 'beginner-guides',
     name: 'Beginner Guides',
-    description: 'Start your hydroponic journey with our comprehensive beginner tutorials',
-    icon: '🌱', // Seedling
+    description: 'Start your hydroponic journey — first builds, first crops, and everything you need to know before spending a dollar',
+    icon: '🌱',
     color: 'bg-blue-500',
     activeColor: 'bg-blue-500 text-white',
     inactiveColor: 'bg-blue-100 text-blue-700 hover:bg-blue-200',
   },
   {
-    slug: 'systems',
-    name: 'Systems',
-    description: 'Explore different hydroponic system types and setups',
-    icon: '⚙️', // Gear
+    slug: 'systems-and-setups',
+    name: 'Systems & Setups',
+    description: 'Every hydroponic system type explained — DWC, NFT, Kratky, ebb and flow, and how to choose the right one for your space',
+    icon: '⚙️',
     color: 'bg-purple-500',
     activeColor: 'bg-purple-500 text-white',
     inactiveColor: 'bg-purple-100 text-purple-700 hover:bg-purple-200',
   },
   {
-    slug: 'nutrients',
-    name: 'Nutrients',
-    description: 'Master nutrient solutions and feeding schedules',
-    icon: '💧', // Water droplet
-    color: 'bg-green-500',
-    activeColor: 'bg-green-500 text-white',
-    inactiveColor: 'bg-green-100 text-green-700 hover:bg-green-200',
-  },
-  {
-    slug: 'plant-care',
-    name: 'Plant Care',
-    description: 'Tips and techniques for healthy plant growth',
-    icon: '🌿', // Herb
+    slug: 'crops-and-growing',
+    name: 'Crops & Growing',
+    description: 'Which crops grow best hydroponically, how to grow them, and the real numbers on yield, harvest time, and nutrients',
+    icon: '🌿',
     color: 'bg-orange-500',
     activeColor: 'bg-orange-500 text-white',
     inactiveColor: 'bg-orange-100 text-orange-700 hover:bg-orange-200',
@@ -45,20 +36,20 @@ export const categories: Category[] = [
   {
     slug: 'diy',
     name: 'DIY',
-    description: 'Build your own hydroponic systems and equipment',
-    icon: '🔧', // Wrench
+    description: 'Build your own hydroponic systems from common parts — with real parts lists, costs, and step-by-step instructions',
+    icon: '🔧',
     color: 'bg-teal-500',
     activeColor: 'bg-teal-500 text-white',
     inactiveColor: 'bg-teal-100 text-teal-700 hover:bg-teal-200',
   },
   {
-    slug: 'advanced',
-    name: 'Advanced',
-    description: 'Advanced techniques for experienced growers',
-    icon: '🎓', // Graduation cap
-    color: 'bg-pink-500',
-    activeColor: 'bg-pink-500 text-white',
-    inactiveColor: 'bg-pink-100 text-pink-700 hover:bg-pink-200',
+    slug: 'troubleshooting',
+    name: 'Troubleshooting',
+    description: 'Diagnose and fix the most common hydroponic problems — yellowing leaves, root rot, pH drift, algae, and more',
+    icon: '🔍',
+    color: 'bg-amber-500',
+    activeColor: 'bg-amber-500 text-white',
+    inactiveColor: 'bg-amber-100 text-amber-700 hover:bg-amber-200',
   },
 ];
 

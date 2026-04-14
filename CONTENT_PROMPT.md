@@ -35,7 +35,7 @@ Do not write a single word of the article until you have:
 title: "[Primary keyword]: [Hook — Real Costs / Honest Guide / What Actually Works]"
 excerpt: "2–3 sentence description. Include primary keyword. State the value clearly."
 date: "YYYY-MM-DD"
-category: "[beginner-guides / systems-and-setups / crops-and-growing / troubleshooting]"
+category: "[beginner-guides / systems-and-setups / crops-and-growing / diy / troubleshooting]"
 tags: [primary keyword, secondary keywords, 4–6 total]
 featured: true/false
 image: /og-image.jpg  (update when real image available)
