@@ -5,6 +5,30 @@
 
 @import "tailwindcss";
 
+@theme {
+  --color-vegetation-50: #f0fdf4;
+  --color-vegetation-100: #dcfce7;
+  --color-vegetation-200: #bbf7d0;
+  --color-vegetation-300: #86efac;
+  --color-vegetation-400: #4ade80;
+  --color-vegetation-500: #22c55e;
+  --color-vegetation-600: #16a34a;
+  --color-vegetation-700: #15803d;
+  --color-vegetation-800: #166534;
+  --color-vegetation-900: #14532d;
+  --color-vegetation-950: #052e16;
+  --color-lime-50: #f7fee7;
+  --color-lime-100: #ecfccb;
+  --color-lime-200: #d9f99d;
+  --color-lime-300: #bef264;
+  --color-lime-400: #a3e635;
+  --color-lime-500: #84cc16;
+  --color-lime-600: #65a30d;
+  --color-lime-700: #4d7c0f;
+  --color-lime-800: #3f6212;
+  --color-lime-900: #365314;
+}
+
 @layer base {
   :root {
     /* Vegetation Green Color Variables */
