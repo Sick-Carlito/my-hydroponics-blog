@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -200,19 +199,13 @@ export default function AboutPage() {
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Let's Connect</h2>
             <p className="text-gray-700 mb-6">Questions? Found a great resource?</p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
+            <div className="flex justify-center mb-6">
               <a href="mailto:hello@hydroponicscentral.com" className="flex items-center gap-2 text-green-600 hover:text-green-700 font-medium transition-colors">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                 </svg>
                 hello@hydroponicscentral.com
-              </a>
-              <a href="https://twitter.com/hydroponicscentral" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-green-600 hover:text-green-700 font-medium transition-colors">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-                @HydroponicsCentral
               </a>
             </div>
             <p className="text-gray-600 text-sm italic">I actually read and respond. 💚</p>

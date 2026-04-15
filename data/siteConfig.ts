@@ -15,18 +15,6 @@ export const siteConfig: SiteConfig = {
     name: 'Carl', // Change this to your name
     bio: 'Hydroponic gardening enthusiast and educator. Helping people grow their own fresh food using modern soilless techniques.',
     avatar: '/images/avatar.jpg', // Add your avatar image
-    social: {
-      twitter: 'https://twitter.com/yourusername',
-      linkedin: 'https://linkedin.com/in/yourusername',
-    },
-  },
-
-  social: {
-    twitter: 'https://twitter.com/hydrogrow',
-    facebook: 'https://facebook.com/hydrogrow',
-    instagram: 'https://instagram.com/hydrogrow',
-    youtube: 'https://youtube.com/@hydrogrow',
-    pinterest: 'https://pinterest.com/hydrogrow',
   },
 
   newsletter: {
