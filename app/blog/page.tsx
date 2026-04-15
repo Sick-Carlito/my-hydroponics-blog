@@ -52,7 +52,7 @@ export default async function BlogPage() {
       {featuredPost && (
         <Section variant="light" padding="md">
           <Container>
-            <h2 className="text-3xl font-bold mb-8 text-gray-900">Featured Article</h2>
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-slate-100">Featured Article</h2>
             <FeaturedPost post={featuredPost} />
           </Container>
         </Section>
@@ -68,7 +68,7 @@ export default async function BlogPage() {
       {/* Search & All Posts */}
       <Section variant="light" padding="lg">
         <Container>
-          <h2 className="text-3xl font-bold mb-8 text-gray-900 text-center">
+          <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-slate-100 text-center">
             All Articles
           </h2>
           

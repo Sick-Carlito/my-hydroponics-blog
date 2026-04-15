@@ -66,15 +66,15 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
             {post.category.replace('-', ' ')}
           </Badge>
 
-          <h3 className="text-xl font-bold mb-2 text-gray-900 line-clamp-2 group-hover:text-vegetation-600 transition-colors">
+          <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-slate-100 line-clamp-2 group-hover:text-vegetation-600 dark:group-hover:text-vegetation-400 transition-colors">
             {post.title}
           </h3>
 
-          <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+          <p className="text-gray-600 dark:text-slate-400 text-sm mb-4 line-clamp-3">
             {post.excerpt}
           </p>
 
-          <div className="flex items-center justify-between text-sm text-gray-500">
+          <div className="flex items-center justify-between text-sm text-gray-500 dark:text-slate-500">
             <span>{formatDate(post.date)}</span>
             <div className="flex items-center gap-1.5">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,7 +90,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
               {post.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
+                  className="text-xs bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 px-2 py-1 rounded"
                 >
                   {tag}
                 </span>
