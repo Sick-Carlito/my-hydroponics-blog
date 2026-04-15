@@ -53,7 +53,7 @@ export default async function AuthorPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
-      <div className="min-h-screen bg-gradient-to-b from-vegetation-50/50 to-white dark:from-slate-950 dark:to-slate-900">
+      <div className="min-h-screen bg-gradient-to-b from-vegetation-50/50 to-white">
 
         {/* Hero */}
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12">
@@ -86,15 +86,15 @@ export default async function AuthorPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 space-y-8">
 
           {/* Who I am */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 p-8">
-            <h2 className="text-xl font-black text-gray-900 dark:text-slate-100 mb-4">Who I Am</h2>
-            <p className="text-gray-600 dark:text-slate-400 leading-relaxed mb-3">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+            <h2 className="text-xl font-black text-gray-900 mb-4">Who I Am</h2>
+            <p className="text-gray-600 leading-relaxed mb-3">
               A few years ago, I wanted to grow my own lettuce. Sounds simple. It wasn&apos;t. I spent hours falling down YouTube rabbit holes, reading conflicting Reddit threads, and bookmarking 47 tabs of &quot;definitive guides&quot; that all said different things.
             </p>
-            <p className="text-gray-600 dark:text-slate-400 leading-relaxed mb-3">
+            <p className="text-gray-600 leading-relaxed mb-3">
               So I built <strong className="text-vegetation-600">Hydroponics Central</strong> — not as an expert, but as someone willing to do the research <em>for</em> you. I&apos;m not claiming 30 years of commercial growing experience. I&apos;m a content curator who reads everything and tells you what actually works.
             </p>
-            <p className="text-gray-600 dark:text-slate-400 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed">
               Every guide I publish is researched from credible sources — USDA, university extensions, peer-reviewed studies — and I always link to them so you can verify everything yourself.
             </p>
           </div>
@@ -150,7 +150,7 @@ export default async function AuthorPage() {
                   <Link
                     key={post.slug}
                     href={`/blog/${post.slug}`}
-                    className="group flex gap-5 bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 p-5 hover:border-vegetation-300 dark:hover:border-vegetation-700 hover:shadow-md transition-all"
+                    className="group flex gap-5 bg-white rounded-2xl border border-gray-100 p-5 hover:border-vegetation-300 hover:shadow-md transition-all"
                   >
                     {/* Category dot */}
                     <div className="flex-shrink-0 w-1.5 rounded-full bg-vegetation-400 self-stretch" />
@@ -158,10 +158,10 @@ export default async function AuthorPage() {
                       <p className="text-xs font-bold uppercase tracking-wider text-vegetation-600 mb-1">
                         {post.category.replace(/-/g, ' ')}
                       </p>
-                      <h3 className="font-bold text-gray-900 dark:text-slate-100 group-hover:text-vegetation-600 dark:group-hover:text-vegetation-400 transition-colors leading-snug mb-1">
+                      <h3 className="font-bold text-gray-900 group-hover:text-vegetation-600 transition-colors leading-snug mb-1">
                         {post.title}
                       </h3>
-                      <p className="text-gray-500 dark:text-slate-400 text-sm line-clamp-2 mb-2">{post.excerpt}</p>
+                      <p className="text-gray-500 text-sm line-clamp-2 mb-2">{post.excerpt}</p>
                       <p className="text-xs text-gray-400">{formatDate(post.date)}</p>
                     </div>
                     <svg className="w-5 h-5 text-gray-300 group-hover:text-vegetation-500 flex-shrink-0 self-center transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">

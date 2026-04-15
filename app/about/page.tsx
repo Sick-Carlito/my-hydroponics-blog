@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-green-50 dark:from-slate-950 dark:to-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-white to-green-50">
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         <div className="text-center mb-12">
@@ -34,17 +34,17 @@ export default function AboutPage() {
         <div className="prose prose-lg max-w-none">
           
           {/* Opening Story */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 mb-8">
-            <p className="text-lg text-gray-700 dark:text-slate-300 leading-relaxed mb-4">
+          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
               A few years ago, I wanted to grow my own lettuce. Sounds simple, right?
             </p>
-            <p className="text-lg text-gray-700 dark:text-slate-300 leading-relaxed mb-4">
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
               Wrong.
             </p>
-            <p className="text-lg text-gray-700 dark:text-slate-300 leading-relaxed mb-4">
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
               I spent <strong>hours</strong> falling down YouTube rabbit holes. I read conflicting Reddit threads. I bookmarked 47 tabs of "definitive guides" that all said different things.
             </p>
-            <p className="text-lg text-gray-700 dark:text-slate-300 leading-relaxed">
+            <p className="text-lg text-gray-700 leading-relaxed">
               That's when I realized: <strong>the information exists, but it's scattered everywhere.</strong>
             </p>
             <p className="text-lg text-gray-700 leading-relaxed mt-4">
@@ -54,8 +54,8 @@ export default function AboutPage() {
 
           {/* What I Do */}
           <div className="bg-gradient-to-br from-cyan-50 to-green-50 rounded-2xl p-8 mb-8 border border-green-100">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">What I Actually Do</h2>
-            <p className="text-gray-700 dark:text-slate-300 mb-4">Every week, I:</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">What I Actually Do</h2>
+            <p className="text-gray-700 mb-4">Every week, I:</p>
             <ul className="space-y-2 text-gray-700">
               <li className="flex items-start">
                 <span className="text-green-600 mr-2">✓</span>
@@ -84,36 +84,36 @@ export default function AboutPage() {
           </div>
 
           {/* My Approach */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">My Approach</h2>
-            <p className="text-gray-700 dark:text-slate-300 mb-4">I believe in:</p>
+          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">My Approach</h2>
+            <p className="text-gray-700 mb-4">I believe in:</p>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="flex items-start">
                 <span className="text-2xl mr-3">🔍</span>
                 <div>
                   <h3 className="font-bold text-gray-900">Transparency</h3>
-                  <p className="text-gray-600 dark:text-slate-400 text-sm">I cite my sources and link to original creators</p>
+                  <p className="text-gray-600 text-sm">I cite my sources and link to original creators</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <span className="text-2xl mr-3">💚</span>
                 <div>
                   <h3 className="font-bold text-gray-900">Honesty</h3>
-                  <p className="text-gray-600 dark:text-slate-400 text-sm">If I'm not sure, I say so</p>
+                  <p className="text-gray-600 text-sm">If I'm not sure, I say so</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <span className="text-2xl mr-3">✨</span>
                 <div>
                   <h3 className="font-bold text-gray-900">Simplicity</h3>
-                  <p className="text-gray-600 dark:text-slate-400 text-sm">No jargon. Explained like you're my friend.</p>
+                  <p className="text-gray-600 text-sm">No jargon. Explained like you're my friend.</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <span className="text-2xl mr-3">🎯</span>
                 <div>
                   <h3 className="font-bold text-gray-900">Reality</h3>
-                  <p className="text-gray-600 dark:text-slate-400 text-sm">I recommend what I'd actually tell someone starting out</p>
+                  <p className="text-gray-600 text-sm">I recommend what I'd actually tell someone starting out</p>
                 </div>
               </div>
             </div>
@@ -123,40 +123,40 @@ export default function AboutPage() {
           </div>
 
           {/* What You'll Find */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 mb-8">
+          <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">What You'll Find Here</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-bold text-green-600 mb-2">📚 Beginner Guides</h3>
-                <p className="text-gray-600 dark:text-slate-400 text-sm">Assuming zero knowledge</p>
+                <p className="text-gray-600 text-sm">Assuming zero knowledge</p>
               </div>
               <div>
                 <h3 className="font-bold text-green-600 mb-2">⚖️ System Comparisons</h3>
-                <p className="text-gray-600 dark:text-slate-400 text-sm">DWC vs. NFT vs. Kratky, actually explained</p>
+                <p className="text-gray-600 text-sm">DWC vs. NFT vs. Kratky, actually explained</p>
               </div>
               <div>
                 <h3 className="font-bold text-green-600 mb-2">🔗 Curated Resources</h3>
-                <p className="text-gray-600 dark:text-slate-400 text-sm">The best tutorials from across the web</p>
+                <p className="text-gray-600 text-sm">The best tutorials from across the web</p>
               </div>
               <div>
                 <h3 className="font-bold text-green-600 mb-2">⭐ Honest Reviews</h3>
-                <p className="text-gray-600 dark:text-slate-400 text-sm">Researched product roundups</p>
+                <p className="text-gray-600 text-sm">Researched product roundups</p>
               </div>
               <div>
                 <h3 className="font-bold text-green-600 mb-2">🔧 Troubleshooting</h3>
-                <p className="text-gray-600 dark:text-slate-400 text-sm">Common problems, multiple solutions</p>
+                <p className="text-gray-600 text-sm">Common problems, multiple solutions</p>
               </div>
               <div>
                 <h3 className="font-bold text-green-600 mb-2">💡 Quick Tips</h3>
-                <p className="text-gray-600 dark:text-slate-400 text-sm">Weekly practical advice you can use immediately</p>
+                <p className="text-gray-600 text-sm">Weekly practical advice you can use immediately</p>
               </div>
             </div>
           </div>
 
           {/* Why I Care */}
           <div className="bg-gradient-to-br from-green-50 to-cyan-50 rounded-2xl p-8 mb-8 border border-green-100">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">Why I Care About This</h2>
-            <p className="text-gray-700 dark:text-slate-300 mb-4">Hydroponics is amazing because:</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Why I Care About This</h2>
+            <p className="text-gray-700 mb-4">Hydroponics is amazing because:</p>
             <ul className="space-y-2 text-gray-700">
               <li className="flex items-start">
                 <span className="text-green-600 mr-2">🏠</span>
@@ -197,7 +197,7 @@ export default function AboutPage() {
 
           {/* Connect */}
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">Let's Connect</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Let's Connect</h2>
             <p className="text-gray-700 mb-6">Questions? Found a great resource?</p>
             <div className="flex justify-center mb-6">
               <a href="mailto:hello@hydroponicscentral.com" className="flex items-center gap-2 text-green-600 hover:text-green-700 font-medium transition-colors">

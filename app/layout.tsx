@@ -9,7 +9,6 @@ import Script from "next/script";
 import "./globals.css";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { siteConfig } from "@/data/siteConfig";
 
 const baseUrl = siteConfig.url;
@@ -82,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={inter.variable} suppressHydrationWarning>
+    <html lang='en' className={inter.variable}>
       <head>
         <meta
           name='viewport'
@@ -147,15 +146,13 @@ export default function RootLayout({
           }}
         />
 
-        <ThemeProvider>
-          <Navigation />
+        <Navigation />
 
-          <main id='main-content' tabIndex={-1}>
-            {children}
-          </main>
+        <main id='main-content' tabIndex={-1}>
+          {children}
+        </main>
 
-          <Footer />
-        </ThemeProvider>
+        <Footer />
       </body>
     </html>
   );

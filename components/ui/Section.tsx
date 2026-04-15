@@ -18,10 +18,11 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(
     const baseStyles = 'w-full';
     
     const variants = {
-      default: 'bg-white dark:bg-slate-950',
+      default: 'bg-white',
+      // GREEN GRADIENT instead of cyan!
       ocean: 'bg-gradient-to-br from-vegetation-600 via-lime-500 to-vegetation-700 text-white',
-      light: 'bg-gray-50 dark:bg-slate-900',
-      dark: 'bg-slate-900 text-white dark:bg-slate-950',
+      light: 'bg-gray-50',
+      dark: 'bg-slate-900 text-white',
     };
 
     const paddings = {

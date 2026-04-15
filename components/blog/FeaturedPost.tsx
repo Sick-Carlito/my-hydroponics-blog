@@ -73,15 +73,15 @@ export const FeaturedPost: React.FC<FeaturedPostProps> = ({ post }) => {
               {post.category.replace('-', ' ')}
             </Badge>
 
-            <h2 className="text-2xl md:text-3xl font-bold mb-3 text-gray-900 dark:text-slate-100 group-hover:text-vegetation-600 dark:group-hover:text-vegetation-400 transition-colors">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3 text-gray-900 group-hover:text-vegetation-600 transition-colors">
               {post.title}
             </h2>
 
-            <p className="text-gray-600 dark:text-slate-400 mb-4 line-clamp-3">
+            <p className="text-gray-600 mb-4 line-clamp-3">
               {post.excerpt}
             </p>
 
-            <div className="flex items-center text-sm text-gray-500 dark:text-slate-500 mb-6">
+            <div className="flex items-center text-sm text-gray-500 mb-6">
               <span>{formatDate(post.date)}</span>
               <span className="mx-2">•</span>
               <span>{post.readTime}</span>

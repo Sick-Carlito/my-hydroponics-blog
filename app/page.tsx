@@ -25,46 +25,46 @@ export default async function HomePage() {
       <Section variant="light" padding="lg">
         <Container>
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-slate-100">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
               Why Choose Hydroponics?
             </h2>
-            <p className="text-xl text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Discover the benefits of modern soilless gardening
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Benefit 1 */}
-            <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-shadow">
+            <div className="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-gradient-to-br from-ocean-400 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-slate-100">Faster Growth</h3>
-              <p className="text-gray-600 dark:text-slate-400">Plants grow up to 50% faster than traditional soil gardening</p>
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Faster Growth</h3>
+              <p className="text-gray-600">Plants grow up to 50% faster than traditional soil gardening</p>
             </div>
 
             {/* Benefit 2 */}
-            <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-shadow">
+            <div className="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-slate-100">Save Money</h3>
-              <p className="text-gray-600 dark:text-slate-400">Use 90% less water and reduce your grocery bills significantly</p>
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Save Money</h3>
+              <p className="text-gray-600">Use 90% less water and reduce your grocery bills significantly</p>
             </div>
 
             {/* Benefit 3 */}
-            <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-shadow">
+            <div className="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-slate-100">Any Space</h3>
-              <p className="text-gray-600 dark:text-slate-400">Perfect for apartments, balconies, and small indoor spaces</p>
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Any Space</h3>
+              <p className="text-gray-600">Perfect for apartments, balconies, and small indoor spaces</p>
             </div>
           </div>
         </Container>
@@ -75,10 +75,10 @@ export default async function HomePage() {
         <Container>
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-slate-100 mb-2">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                 Latest Articles
               </h2>
-              <p className="text-gray-600 dark:text-slate-400">
+              <p className="text-gray-600">
                 Expert guides and tips for hydroponic gardening
               </p>
             </div>
