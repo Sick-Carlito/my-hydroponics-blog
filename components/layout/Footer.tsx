@@ -90,7 +90,17 @@ export const Footer: React.FC = () => {
         {/* Social Links & Copyright */}
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-400">
-            © {currentYear} Hydroponics Central. Growing without soil, powered by water.
+            © {currentYear} Hydroponics Central. Growing without soil, powered by water.{' '}
+            Built by{' '}
+            <a
+              href="https://carlbond.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-400 hover:text-green-300 transition-colors"
+            >
+              Carl Bond
+            </a>
+            .
           </p>
 
         </div>
