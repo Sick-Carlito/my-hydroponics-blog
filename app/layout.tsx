@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     "vegetables",
   ],
   authors: [{ name: "Carl" }],
+  verification: {
+    google: "gtJk_ypzmKEZ-LqPb7KXrx697LfHAsrKTEjbjWEwuzw",
+  },
   metadataBase: new URL(baseUrl),
   alternates: {
     types: {
