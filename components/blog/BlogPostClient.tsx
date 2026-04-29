@@ -929,17 +929,10 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
                   </div>
                 </div>
 
-                <div
-                  className='space-y-2 sm:space-y-3'
-                  itemScope
-                  itemType='https://schema.org/FAQPage'
-                >
+                <div className='space-y-2 sm:space-y-3'>
                   {faqs.map((faq: FAQ, i: number) => (
                     <div
                       key={i}
-                      itemScope
-                      itemProp='mainEntity'
-                      itemType='https://schema.org/Question'
                       className={`rounded-lg sm:rounded-2xl border overflow-hidden transition-all duration-200 ${openFaq === i ? "border-vegetation-300 shadow-md shadow-vegetation-100" : "border-gray-200 hover:border-gray-300"}`}
                     >
                       <button
@@ -947,10 +940,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
                         className='w-full flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 text-left bg-white hover:bg-gray-50/50 transition-colors gap-3'
                         aria-expanded={openFaq === i}
                       >
-                        <span
-                          itemProp='name'
-                          className='font-semibold text-gray-800 pr-3 leading-snug text-sm sm:text-base'
-                        >
+                        <span className='font-semibold text-gray-800 pr-3 leading-snug text-sm sm:text-base'>
                           {faq.q}
                         </span>
                         <span
@@ -972,17 +962,9 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
                         </span>
                       </button>
                       {openFaq === i && (
-                        <div
-                          itemScope
-                          itemProp='acceptedAnswer'
-                          itemType='https://schema.org/Answer'
-                          className='px-4 sm:px-6 pb-4 sm:pb-6 bg-white'
-                        >
+                        <div className='px-4 sm:px-6 pb-4 sm:pb-6 bg-white'>
                           <div className='h-px bg-gray-100 mb-3 sm:mb-4' />
-                          <p
-                            itemProp='text'
-                            className='text-gray-600 leading-relaxed text-sm sm:text-base'
-                          >
+                          <p className='text-gray-600 leading-relaxed text-sm sm:text-base'>
                             {faq.a}
                           </p>
                         </div>
