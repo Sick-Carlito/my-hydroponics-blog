@@ -12,6 +12,9 @@ Use this prompt every time you write a blog post. Check the final draft against 
 **Tone:** Direct, honest, first-person. No fluff. No fake expertise. Cite everything.  
 **Niche:** Hydroponics — systems, crops, setups, troubleshooting, buying guides.
 
+### Writing philosophy: humans first, search engines second
+Write for the person reading, not for Google. Google rewards posts that genuinely help people — dense keyword repetition, hollow phrasing, and padded sections actively hurt rankings under helpful content guidelines. Every section should pass this test: "Would a real beginner grower find this useful and honest?" If the answer is no, cut or rewrite it. SEO is a byproduct of genuinely useful content, not the goal itself.
+
 ---
 
 ## BEFORE YOU WRITE — RESEARCH CHECKLIST
@@ -25,6 +28,13 @@ Do not write a single word of the article until you have:
 - [ ] Collected **real numbers**: prices, yield data, time to harvest, wattage, costs
 - [ ] Verified every **source URL actually works** and links to the specific study/page (not a homepage)
 - [ ] Identified the **search intent**: is the reader comparing options, ready to buy, or learning from scratch?
+
+### Price verification rules (buying guides and product posts)
+- Verify every price on the brand's own website AND at least one major retailer (Amazon, Costco, Home Depot) before publishing
+- Never publish a single price point as definitive — use a range (e.g., ~$499–$699) that reflects brand-site vs. retailer differences
+- Always include a price disclaimer in the opening section: *"Prices verified [Month Year] — confirm on brand websites before purchasing"*
+- Note specifically if a retailer (e.g., Costco) offers a meaningfully lower price than the brand site — that's useful to readers
+- For products with multiple configurations (with/without lights, different pod counts), clearly distinguish the price for each variant in the comparison table
 
 ---
 
@@ -93,6 +103,9 @@ faqs:
 - Carl's curator verdict: who should do this, who shouldn't
 - Answer the "is it worth it" question directly
 - Recommend the simplest starting point
+- Must be written in first-person — this is where Carl's voice is most important
+- Include one honest observation that surprised you in the research, or that most guides miss
+- Do not write this as a bullet summary — write it as a short, direct paragraph verdict
 
 ### Images — REQUIRED placeholders in every post
 - Place an image placeholder after every major section (after each H2 block)
@@ -131,12 +144,14 @@ No asterisks. Plain text with one inline link.
 
 ## E-E-A-T CHECKLIST (run before publishing)
 
-- [ ] Does Carl's first-person voice come through? (Not generic "you should...")
+- [ ] Does Carl's first-person voice come through? (Not generic "you should...") — check that it's consistent throughout, not just in the opening
 - [ ] Is every factual claim linked to a credible source?
 - [ ] Are all source URLs specific (not homepages)?
-- [ ] Is there a disclaimer where appropriate? ("I'm a curator, not a licensed agronomist")
-- [ ] Are prices and product names real and current?
+- [ ] Is there a disclaimer where appropriate? ("I'm a curator, not a licensed agronomist") — place this in the opening section
+- [ ] Are prices and product names real and current? Have they been verified on brand websites AND a major retailer?
 - [ ] Does the post answer the search intent within the first 150 words?
+- [ ] Are any sources low-authority (anonymous forum posts, affiliate blogs without original data)? Replace with Reddit threads, brand community forums, or published reviews that have real attribution
+- [ ] Are there any internal factual inconsistencies? (e.g., the same product named differently in takeaways vs. body text, conflicting prices) — read the takeaways, FAQ frontmatter, and body text as a set before publishing
 
 ---
 
@@ -165,6 +180,11 @@ No asterisks. Plain text with one inline link.
 - Using the word "comprehensive" or "ultimate" in the title (overused, Google ignores it)
 - Recommending products without real prices
 - Promising a "complete guide" without covering troubleshooting
+- A sources list at the bottom of the post — all citations are inline only, anchored to the finding not the source name
+- Single price points for products that vary by retailer — always use a range and a verification disclaimer
+- Low-authority sources for product reliability claims (anonymous forum posts, single Reddit comments) — find corroborated community reports or published reviews
+- FAQ body sections that repeat the frontmatter FAQs with only minor rephrasing — body FAQ answers must add meaningful detail or context not covered in the short frontmatter versions
+- Writing for search engines: padding sections to hit word count, repeating the primary keyword unnaturally, or writing section intros that restate the heading. Write for the human reader first.
 
 ---
 
