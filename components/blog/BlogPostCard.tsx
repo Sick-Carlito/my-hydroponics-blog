@@ -20,7 +20,6 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
     const variants: Record<string, any> = {
       'beginner-guides': 'blue',
       'systems-and-setups': 'purple',
-      'systems': 'purple',
       'crops-and-growing': 'orange',
       'diy': 'cyan',
       'troubleshooting': 'ocean',
