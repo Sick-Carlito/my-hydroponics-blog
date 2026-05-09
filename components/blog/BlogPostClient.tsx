@@ -127,7 +127,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
       const img = tokens[0];
       return `<figure class="my-10">
         <img src="${img.href}" alt="${img.text || ""}" class="w-full rounded-2xl shadow-xl" loading="lazy"/>
-        ${img.title ? `<figcaption class="text-center text-sm text-gray-400 mt-3 italic">${img.title}</figcaption>` : ""}
+        ${img.text ? `<figcaption class="text-center text-sm text-gray-400 mt-3 italic">${img.text}</figcaption>` : ""}
       </figure>`;
     }
     return `<p class="text-gray-600 text-[17px] leading-[1.9] mb-6">${renderInline(tokens)}</p>`;
@@ -323,7 +323,7 @@ export const BlogPostClient = ({ post }: { post: BlogPost }) => {
         .join("")}
     </tbody>`;
 
-    return `<div style="margin:2.5rem 0 0.5rem 0;overflow:hidden;border-radius:16px;border:1px solid #e5e7eb;box-shadow:0 4px 16px rgba(0,0,0,0.08);overflow-x:auto">
+    return `<div style="margin:2.5rem 0 2rem 0;overflow:hidden;border-radius:16px;border:1px solid #e5e7eb;box-shadow:0 4px 16px rgba(0,0,0,0.08);overflow-x:auto">
       <table style="min-width:100%;border-collapse:collapse">${header}${body}</table>
     </div>`;
   };
