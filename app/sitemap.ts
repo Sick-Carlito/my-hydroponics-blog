@@ -7,6 +7,8 @@ import { getAllBlogPosts } from '@/lib/mdx';
 import { siteConfig } from '@/data/siteConfig';
 import { MetadataRoute } from 'next';
 
+export const revalidate = 86400;
+
 const baseUrl = siteConfig.url;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
