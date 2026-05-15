@@ -197,6 +197,6 @@ No asterisks. Plain text with one inline link.
 | indoor hydroponic growing system | 1,300 | 27 | Supporting | Published |
 | hydroponic gardening vegetables | 880 | 30 | Supporting | Published |
 | hydroponic vertical garden | 4,400 | 35 | Supporting | Published (May 2026) |
-| best hydroponic tower garden | 210 | 32 | Supporting | Planned |
+| best hydroponic tower garden | 210 | 32 | Supporting | Published (May 2026) |
 
 Add new keywords here as you research them.
