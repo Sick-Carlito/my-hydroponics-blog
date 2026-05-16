@@ -39,6 +39,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Carl" }],
   verification: {
     google: "gtJk_ypzmKEZ-LqPb7KXrx697LfHAsrKTEjbjWEwuzw",
+    other: {
+      "p:domain_verify": "80778ce766a442918492cebbada5e1c1",
+    },
   },
   metadataBase: new URL(baseUrl),
   alternates: {
