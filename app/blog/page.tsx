@@ -10,15 +10,21 @@ import { CategoryFilter } from '@/components/blog/CategoryFilter';
 import { Newsletter } from '@/components/blog/Newsletter';
 import { BlogSearch } from '@/components/blog/BlogSearch';
 import { getAllBlogPosts, getFeaturedPosts } from '@/lib/mdx';
+import type { Metadata } from 'next';
+import { siteConfig } from '@/data/siteConfig';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Blog - Hydroponics Central | Expert Guides & Tips',
   description: 'Expert hydroponics guides, system comparisons, nutrient tutorials, and growing tips. Everything you need to grow fresh produce with hydroponics.',
   keywords: ['hydroponics blog', 'hydroponic guides', 'DWC system', 'Kratky method', 'indoor growing', 'hydroponic nutrients'],
+  alternates: {
+    canonical: `${siteConfig.url}/blog`,
+  },
   openGraph: {
     title: 'Hydroponics Central Blog - Expert Guides & Tips',
     description: 'Expert hydroponics guides, system comparisons, nutrient tutorials, and growing tips.',
     type: 'website',
+    url: `${siteConfig.url}/blog`,
   },
   twitter: {
     card: 'summary_large_image',

@@ -1,13 +1,18 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { siteConfig } from '@/data/siteConfig';
 
 export const metadata: Metadata = {
   title: 'About Carl - Hydroponics Central',
   description: 'Meet Carl, the curator behind Hydroponics Central. Not an expert — just someone who reads everything about hydroponics so you don\'t have to.',
+  alternates: {
+    canonical: `${siteConfig.url}/about`,
+  },
   openGraph: {
     title: 'About Carl - Hydroponics Central',
     description: 'Meet Carl, the curator behind Hydroponics Central. Not an expert — just someone who reads everything about hydroponics so you don\'t have to.',
     type: 'website',
+    url: `${siteConfig.url}/about`,
   },
   twitter: {
     card: 'summary_large_image',

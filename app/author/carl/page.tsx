@@ -8,10 +8,14 @@ import { siteConfig } from '@/data/siteConfig';
 export const metadata: Metadata = {
   title: 'Carl — Hydroponics Curator | Hydroponics Central',
   description: 'Carl is the researcher and curator behind Hydroponics Central. Not an expert grower — just someone who reads everything so you don\'t have to.',
+  alternates: {
+    canonical: `${siteConfig.url}/author/carl`,
+  },
   openGraph: {
     title: 'Carl — Hydroponics Curator | Hydroponics Central',
     description: 'Carl is the researcher and curator behind Hydroponics Central. Not an expert grower — just someone who reads everything so you don\'t have to.',
     type: 'profile',
+    url: `${siteConfig.url}/author/carl`,
   },
   twitter: {
     card: 'summary_large_image',
