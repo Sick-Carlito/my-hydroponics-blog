@@ -98,8 +98,8 @@ export default async function HomePage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {recentPosts.map((post) => (
-                <BlogPostCard key={post.slug} post={post} />
+              {recentPosts.map((post, index) => (
+                <BlogPostCard key={post.slug} post={post} priority={index === 0} />
               ))}
             </div>
           )}

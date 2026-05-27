@@ -13,9 +13,10 @@ import { BlogPost } from '@/types';
 
 interface BlogPostCardProps {
   post: BlogPost;
+  priority?: boolean;
 }
 
-export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
+export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, priority = false }) => {
   const getBadgeVariant = (category: string) => {
     const variants: Record<string, any> = {
       'beginner-guides': 'blue',
@@ -39,7 +40,8 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              loading="lazy"
+              loading={priority ? 'eager' : 'lazy'}
+              priority={priority}
             />
           ) : (
             <div className="flex items-center justify-center h-full">

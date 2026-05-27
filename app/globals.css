@@ -659,6 +659,44 @@ html {
   color: #14532d;
 }
 
+/* ── Hero & Droplet Animations (moved from styled-jsx for SSR) ── */
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes hero-ripple {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes hero-pulse-slow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes hero-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes droplet-bob {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-4px) scale(1.05); }
+}
+
+.animate-hero-float { animation: hero-float 6s ease-in-out infinite; }
+.animate-hero-float-delayed { animation: hero-float 6s ease-in-out 3s infinite; }
+.animate-hero-ripple { animation: hero-ripple 2s ease-out infinite; }
+.animate-hero-ripple-delayed { animation: hero-ripple 2s ease-out 0.3s infinite; }
+.animate-hero-pulse-slow { animation: hero-pulse-slow 4s ease-in-out infinite; }
+.animate-hero-pulse-slow-delayed { animation: hero-pulse-slow 4s ease-in-out 2s infinite; }
+.animate-hero-fade-in { animation: hero-fade-in 0.8s ease-out 0.2s backwards; }
+.animate-hero-fade-in-delayed { animation: hero-fade-in 0.8s ease-out 0.4s backwards; }
+.animate-hero-fade-in-more-delayed { animation: hero-fade-in 0.8s ease-out 0.6s backwards; }
+.animate-hero-fade-in-latest { animation: hero-fade-in 0.8s ease-out 0.8s backwards; }
+.animate-droplet { animation: droplet-bob 2s ease-in-out infinite; }
+
 /* ── Improved Link Underlines ── */
 .article-content a {
   text-decoration-skip-ink: auto;
