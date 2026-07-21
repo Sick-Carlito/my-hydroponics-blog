@@ -11,6 +11,17 @@ import { Newsletter } from '@/components/blog/Newsletter';
 import { getRecentPosts } from '@/lib/mdx';
 import { AnimatedHero } from '@/components/home/AnimatedHero';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+import { siteConfig } from '@/data/siteConfig';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: siteConfig.url,
+  },
+  openGraph: {
+    url: siteConfig.url,
+  },
+};
 
 export default async function HomePage() {
   const recentPosts = await getRecentPosts(6);
